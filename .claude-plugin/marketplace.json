@@ -1,0 +1,28 @@
+{
+  "name": "doraemon-skills",
+  "description": "Claude Code skills collection — a 4D pocket of productivity tools",
+  "version": "0.1.1",
+  "owner": {
+    "name": "zwyin"
+  },
+  "plugins": [
+    {
+      "name": "doraemon-skills",
+      "description": "Claude Code skills collection — a 4D pocket of productivity tools",
+      "source": "./",
+      "category": "productivity",
+      "tags": [
+        "claude-code",
+        "skills",
+        "productivity",
+        "github",
+        "publishing",
+        "walkthrough"
+      ],
+      "skills": [
+        "./skills/doraemon-github-safe-publish/skills/doraemon-github-safe-publish",
+        "./skills/doraemon-project-walkthrough/skills/doraemon-project-walkthrough"
+      ]
+    }
+  ]
+}

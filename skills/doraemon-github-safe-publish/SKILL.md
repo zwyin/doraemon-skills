@@ -1,0 +1,1 @@
+skills/doraemon-github-safe-publish/SKILL.md
