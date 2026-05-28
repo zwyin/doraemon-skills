@@ -49,7 +49,7 @@ git commit -m "release: v$NEXT"
 # Tag
 git tag "v$NEXT" -m "v$NEXT"
 
-# Push to ruyi remote
+# Push to doraemon remote
 RUyi_REMOTE=$(git remote | grep -v github | head -1 || echo "origin")
 git -c http.proxy="" -c https.proxy="" push "$RUyi_REMOTE" main --tags
 

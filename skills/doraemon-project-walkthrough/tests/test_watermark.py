@@ -18,11 +18,11 @@ ONE_CHAPTER = [{"title": "Intro", "sidebar": "01 Intro", "html": "<h1>Intro</h1>
 
 class TestBuildWatermarkSection:
     def test_zh_default(self):
-        html = build_watermark_section("doraemon-project-walkthrough", "https://github.com/zwyin/ruyi-skills", "zh")
+        html = build_watermark_section("doraemon-project-walkthrough", "https://github.com/zwyin/doraemon-skills", "zh")
         assert 'id="ch-watermark"' in html
         assert "关于本报告" in html
         assert "<strong>doraemon-project-walkthrough</strong>" in html
-        assert "https://github.com/zwyin/ruyi-skills" in html
+        assert "https://github.com/zwyin/doraemon-skills" in html
         assert "欢迎大家使用、讨论和反馈" in html
 
     def test_en(self):
