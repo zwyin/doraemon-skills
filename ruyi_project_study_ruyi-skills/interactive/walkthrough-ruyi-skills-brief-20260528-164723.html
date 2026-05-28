@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ruyi-skills 项目走读</title>
+<style>
+:root{--bg:#fff;--text:#1a1a2e;--sidebar-bg:#f0f0f5;--sidebar-text:#333;--sidebar-hover:#e0e0ea;--sidebar-active:#d0d0e0;--card-bg:#f8f8fc;--card-border:#e0e0e8;--accent:#6366f1;--link:#6366f1;--code-bg:#f4f4f8;--quote-bg:#f8f8ff;--quote-border:#6366f188}
+[data-theme="dark"]{--bg:#1a1a2e;--text:#e0e0ea;--sidebar-bg:#16213e;--sidebar-text:#c0c0d0;--sidebar-hover:#1a2744;--sidebar-active:#1e2d4a;--card-bg:#1e2744;--card-border:#2a3555;--accent:#6366f1cc;--link:#6366f1cc;--code-bg:#162030;--quote-bg:#1a1a30;--quote-border:#6366f188}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;display:flex;min-height:100vh}
+.sidebar{width:280px;background:var(--sidebar-bg);color:var(--sidebar-text);padding:20px 0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;border-right:1px solid var(--card-border);z-index:100}
+.sidebar h2{font-size:14px;padding:8px 20px;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+.sidebar a{display:block;padding:8px 20px;text-decoration:none;color:var(--sidebar-text);font-size:13px;border-left:3px solid transparent}
+.sidebar a:hover{background:var(--sidebar-hover);border-left-color:var(--accent)}
+.sidebar a.active{background:var(--sidebar-active);border-left-color:var(--accent);font-weight:600}
+.main{margin-left:280px;padding:40px 60px;max-width:860px;width:100%}
+h1{font-size:28px;margin-bottom:16px;color:var(--accent)}h2{font-size:22px;margin:32px 0 12px;color:var(--accent)}h3{font-size:18px;margin:24px 0 8px}h4{font-size:16px;margin:20px 0 8px;opacity:0.9}
+p{margin-bottom:12px}blockquote{border-left:4px solid var(--quote-border);background:var(--quote-bg);padding:12px 20px;margin:16px 0;font-style:italic}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}th,td{border:1px solid var(--card-border);padding:8px 12px;text-align:left}th{background:var(--card-bg);font-weight:600}
+pre{background:var(--code-bg);border:1px solid var(--card-border);border-radius:6px;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px;line-height:1.5}
+code{font-family:'SF Mono',Monaco,'Cascadia Code',monospace}pre code{background:none;border:none;padding:0}p code,li code{background:var(--code-bg);padding:2px 6px;border-radius:3px;font-size:0.9em}
+ul,ol{margin:12px 0 12px 24px}li{margin-bottom:6px}hr{border:none;border-top:1px solid var(--card-border);margin:24px 0}
+details{margin:12px 0;background:var(--card-bg);border:1px solid var(--card-border);border-radius:6px;padding:12px 16px}summary{cursor:pointer;color:var(--accent);font-weight:500;font-size:14px}
+.nav-links{display:flex;justify-content:space-between;margin:40px 0 20px;padding-top:20px;border-top:1px solid var(--card-border)}.nav-links a{color:var(--link);text-decoration:none}
+.topbar{display:none;position:fixed;top:0;left:0;right:0;height:50px;background:var(--sidebar-bg);border-bottom:1px solid var(--card-border);z-index:200;padding:0 16px;align-items:center;justify-content:space-between}.topbar button{background:none;border:none;color:var(--text);font-size:20px;cursor:pointer}
+.theme-toggle{position:fixed;bottom:20px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:20px;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.chapter{display:none}.chapter.active{display:block}
+@media(max-width:768px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0;padding:60px 20px 40px}.topbar{display:flex}}
+@media print{.sidebar,.topbar,.theme-toggle{display:none!important}.main{margin-left:0;padding:20px}.chapter{display:block!important;page-break-after:always}}
+</style>
+</head>
+<body>
+<button class="theme-toggle" onclick="toggleTheme()">&#9790;</button>
+<div class="topbar"><button onclick="document.getElementById('sidebar').classList.toggle('open')">&#9776;</button><span>ruyi-skills 项目走读</span><span></span></div>
+<nav class="sidebar" id="sidebar"><h2>章节</h2><a href="#" onclick="showChapter(0);return false;">01 第 1 章：项目概览</a>
+<a href="#" onclick="showChapter(1);return false;">02 第 2 章：架构设计</a>
+<a href="#" onclick="showChapter(2);return false;">03 第 3 章：github-safe-publish — ...</a>
+<a href="#" onclick="showChapter(3);return false;">04 第 4 章：project-walkthrough — ...</a>
+<a href="#" onclick="showChapter(4);return false;">05 第 5 章：构建与发布</a>
+<a href="#" onclick="showChapter(5);return false;">06 第 6 章：质量保障</a>
+<a href="#" onclick="showChapter(6);return false;">07 第 7 章：知识测验</a>
+<a href="#" onclick="showChapter(7);return false;">知识测验</a>
+<a href="#" onclick="showChapter(8);return false;">关于</a></nav>
+<main class="main" id="main"><div class="chapter" id="ch0"><h1>第 1 章：项目概览</h1>
+<h2>如意是什么？</h2>
+<blockquote><p><strong>类比理解：</strong> 想象你有一把瑞士军刀——平时各种工具散落各处，要用的时候找不到。ruyi-skills 就是一把「数字瑞士军刀」，把常用的复杂操作打包成一条命令。比如「把代码安全地发布到 GitHub」或者「自动生成项目文档」，原本需要几十个步骤，现在一个指令搞定。</p></blockquote>
+<p>ruyi-skills 是一个 <strong>Claude Code skill 合集</strong>。它为 AI 编程助手 Claude Code 提供了两个核心能力：</p>
+<table><thead><tr><th>Skill</th><th>版本</th><th>一句话说明</th></tr></thead><tbody><tr><td><strong>github-safe-publish</strong></td><td>0.7.0</td><td>安全发布代码到 GitHub——两层脱敏扫描 + 自动修复 + 一键发布</td></tr><tr><td><strong>project-walkthrough</strong></td><td>1.6.1</td><td>项目技术走读——自动分析项目、生成文档和交互式 HTML</td></tr></tbody></table>
+<p>合集版本：<strong>0.8.0</strong>（<code>marketplace.json</code>）</p>
+<blockquote><p>Simplified from: <code>.claude-plugin/marketplace.json</code></p></blockquote>
+<h2>这两个 Skill 解决什么问题？</h2>
+<h3>github-safe-publish</h3>
+<p>把本地项目公开发布到 GitHub 听起来简单，但隐藏着大量风险：API 密钥泄露、内部 IP 暴露、个人邮箱混入代码……github-safe-publish 在发布前做<strong>两层安全扫描</strong>，找出敏感信息，自动修复，然后安全推送。</p>
+<p><strong>6 大扫描维度，135 条规则：</strong></p>
+<table><thead><tr><th>维度</th><th>规则数</th><th>举例</th></tr></thead><tbody><tr><td>密钥与凭证</td><td>100</td><td>AWS Key、GitHub Token、Google API Key</td></tr><tr><td>数据库连接</td><td>5</td><td>含密码的数据库连接字符串</td></tr><tr><td>个人隐私</td><td>8</td><td>邮箱、手机号、身份证号</td></tr><tr><td>内部基础设施</td><td>6</td><td>内网 IP、域名</td></tr><tr><td>文件黑名单</td><td>12</td><td>.env、id_rsa 等不应公开的文件</td></tr><tr><td>Git 历史</td><td>4</td><td>Git 中的二进制密钥痕迹</td></tr></tbody></table>
+<blockquote><p>Simplified from: <code>skills/ruyi-github-safe-publish/docs/scanning-rules.md</code></p></blockquote>
+<h3>project-walkthrough</h3>
+<p>面对一个陌生的代码库，通常需要花几天时间阅读代码、画架构图、写文档。project-walkthrough 自动完成这个过程：分析项目结构、提取关键设计决策、生成带测验的交互式文档。</p>
+<p>支持多种输出模式：</p>
+<ul><li><strong>深度</strong>：brief（快速概览）、medium（详细分析）、deep（全面走读）、all（全部）</li><li><strong>受众</strong>：general（普通读者，含类比卡片）或 dev（开发者）</li><li><strong>语言</strong>：中文 / 纯中文 / 英文 / 中英对照</li></ul>
+<h2>怎么安装？</h2>
+<blockquote><p><strong>类比理解：</strong> 安装 ruyi-skills 就像给手机装一个 App——最简单的方式是在「应用商店」里搜到它，点一下安装。Claude Code 的「应用商店」叫做 marketplace。</p></blockquote>
+<p>最简单的安装方式：</p>
+<pre><code># 添加 marketplace
+/plugin marketplace add zwyin/ruyi-skills
+
+# 安装
+/plugin install ruyi-skills@ruyi-skills
+
+# 重新加载
+/reload-plugins</code></pre>
+<p>安装后，两个 skill 就可以在 Claude Code 中直接使用了：</p>
+<pre><code>/ruyi-github-safe-publish        # 安全发布到 GitHub
+/ruyi-project-walkthrough        # 生成项目走读文档</code></pre>
+<h2>项目规模</h2>
+<table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>核心文件</td><td>~128 个</td></tr><tr><td>核心代码行数</td><td>~20,000 行</td></tr><tr><td>Skills 数量</td><td>2 个</td></tr><tr><td>测试文件</td><td>18 个（7 + 8 + 3）</td></tr><tr><td>CI 覆盖率门禁</td><td>≥ 95%</td></tr></tbody></table>
+<blockquote><p>Simplified from: 项目文件扫描统计</p></blockquote>
+<hr>
+<div class="nav-links"><span></span><a href="#" onclick="showChapter(1);return false;">下一章 &rarr;</a></div></div>
+<div class="chapter" id="ch1"><h1>第 2 章：架构设计</h1>
+<h2>项目结构总览</h2>
+<blockquote><p><strong>类比理解：</strong> ruyi-skills 的结构像一个购物中心——有一栋主楼（合集仓库），里面有多个独立店铺（skills）。每个店铺自己管理自己的货物（自包含），但购物中心统一收银（单一 marketplace）和管理品牌（多品牌分发）。</p></blockquote>
+<pre><code>ruyi-skills/
+├── .claude-plugin/
+│   └── marketplace.json            # 唯一安装入口，列所有 skills
+├── skills/                         # 各 skill（独立仓库通过 git subtree 导入）
+│   ├── ruyi-github-safe-publish/   #   安全发布 skill
+│   │   ├── skills/.../SKILL.md     #     唯一事实源
+│   │   ├── docs/                   #     规则参考
+│   │   ├── scripts/                #     专属脚本
+│   │   └── tests/                  #     专属测试
+│   └── ruyi-project-walkthrough/   #   走读文档 skill
+│       ├── skills/.../SKILL.md
+│       ├── docs/
+│       ├── scripts/
+│       └── tests/
+├── scripts/                        # 合集级工具（不属于任何 skill）
+│   ├── check_self_contained.py     #   自包含检查
+│   ├── convert.sh                  #   多平台转换
+│   └── release.sh                  #   版本发布
+├── tests/                          # 合集级测试
+├── dist/                           # 转换输出（gitignored）
+├── Makefile                        # 构建命令
+└── docs/                           # 仓库级文档</code></pre>
+<blockquote><p>Simplified from: <code>docs/architecture-design.md</code></p></blockquote>
+<h2>8 条设计原则</h2>
+<h3>P1：Skill 自包含</h3>
+<blockquote><p><strong>类比理解：</strong> 每个 skill 像一个独立的手机 App——它不依赖手机上其他 App 的数据。即使你只安装了一个 skill，它也能独立运行。</p></blockquote>
+<p><strong>做法</strong>：SKILL.md 及 references/ 内的所有链接不得指向 skill 目录外的文件。</p>
+<p><strong>执行保障</strong>：CI 中运行 <code>check_self_contained.py</code>，扫描所有 <code>.md</code> 文件中的跨目录链接，发现违规立即报错。</p>
+<pre><code># Simplified from: scripts/check_self_contained.py:12-13
+# 检测跨 skill 链接的正则表达式
+CROSS_LINK = re.compile(r&#x27;\[.*?\]\((?!https?://)(?!#)(?!`)(?!\./)(\.\./.+?)\)&#x27;)</code></pre>
+<h3>P2：渐进展示</h3>
+<p>SKILL.md 控制在 500 行以内，详细规则放在 <code>references/</code> 子目录。就像一篇文章有摘要和正文——先看摘要抓住重点，需要细节时再深入。</p>
+<h3>P3：单一 Marketplace</h3>
+<p>一个 <code>marketplace.json</code> 列出所有 skills，用户一次安装获得全部。新增 skill 只需在 marketplace.json 加一行。</p>
+<pre><code>// Simplified from: .claude-plugin/marketplace.json
+{
+  &quot;name&quot;: &quot;ruyi-skills&quot;,
+  &quot;version&quot;: &quot;0.8.0&quot;,
+  &quot;skills&quot;: [
+    &quot;./skills/ruyi-github-safe-publish/skills/ruyi-github-safe-publish&quot;,
+    &quot;./skills/ruyi-project-walkthrough/skills/ruyi-project-walkthrough&quot;
+  ]
+}</code></pre>
+<h3>P4：Subtree 双向同步</h3>
+<blockquote><p><strong>类比理解：</strong> 想象一个连锁餐厅——总部（合集仓库）和各分店（独立仓库）之间可以双向同步菜品（代码）。分店研发了新菜（更新），总部拉取后分发给所有分店。</p></blockquote>
+<p>各 skill 有独立仓库用于日常迭代，合集仓库通过 <code>git subtree</code> 导入，保持双向同步：</p>
+<pre><code># Simplified from: docs/architecture-design.md:72-78
+# 从独立仓库拉取更新
+git subtree pull --prefix=skills/ruyi-github-safe-publish \
+  https://github.com/zwyin/github-safe-publish.git master --squash
+
+# 推回独立仓库
+git subtree push --prefix=skills/ruyi-github-safe-publish \
+  https://github.com/zwyin/github-safe-publish.git master</code></pre>
+<h3>P5：双层版本</h3>
+<table><thead><tr><th>层级</th><th>定义位置</th><th>管理方式</th></tr></thead><tbody><tr><td>Skill 版本</td><td>SKILL.md frontmatter</td><td>随 subtree 同步</td></tr><tr><td>合集版本</td><td>marketplace.json</td><td>release.sh 统一 bump</td></tr></tbody></table>
+<blockquote><p>Simplified from: <code>docs/architecture-design.md:82-84</code></p></blockquote>
+<h3>P6：多品牌推送</h3>
+<p>ruyi-skills 是唯一开发仓库。通过独立的 brand-sync-tool 自动生成 4 个品牌仓库：</p>
+<table><thead><tr><th>品牌</th><th>受众</th><th>README 语言</th></tr></thead><tbody><tr><td>ruyi</td><td>中文用户</td><td>中文默认</td></tr><tr><td>paoding</td><td>中文用户</td><td>中文默认</td></tr><tr><td>davinci</td><td>海外用户</td><td>英文默认</td></tr><tr><td>doraemon</td><td>海外用户</td><td>英文默认</td></tr></tbody></table>
+<p>每个品牌有独立的 Git 历史，用户从任一品牌名找到都能用。</p>
+<blockquote><p>Simplified from: <code>docs/architecture-design.md:88-98</code></p></blockquote>
+<h3>P7：生成文件隔离</h3>
+<p>多平台转换文件输出到 gitignored 的 <code>dist/</code> 目录，不污染 Git 历史。</p>
+<h3>P8：质量门禁</h3>
+<p>CI 包含测试数量下限 + 覆盖率门禁（≥ 95%）+ 结构验证。</p>
+<h2>开发流程</h2>
+<pre><code>日常迭代 → 独立仓库（github-safe-publish / project-walkthrough-skill）
+    ↓ 完成版本
+subtree pull → 合集仓库（ruyi-skills）
+    ↓ 更新 marketplace / README / CHANGELOG
+brand-sync-tool → 4 个品牌仓库各自推送</code></pre>
+<blockquote><p>Simplified from: <code>docs/architecture-design.md:112-119</code></p></blockquote>
+<hr>
+<div class="nav-links"><a href="#" onclick="showChapter(0);return false;">&larr; 上一章</a><a href="#" onclick="showChapter(2);return false;">下一章 &rarr;</a></div></div>
+<div class="chapter" id="ch2"><h1>第 3 章：github-safe-publish — 安全发布 Skill</h1>
+<h2>这个 Skill 做什么？</h2>
+<blockquote><p><strong>类比理解：</strong> 把代码发布到 GitHub，就像把一封邮件发到公开论坛——你永远不知道里面是不是不小心夹带了密码、私钥或内网地址。github-safe-publish 就像一个「安全检查员」，在发送前把信封里的敏感信息全部找出来、替换掉，确认安全后才发出。</p></blockquote>
+<p>github-safe-publish 是一个端到端的安全发布工具，核心能力：</p>
+<ol><li><strong>两层扫描</strong>：第一层用 135 条确定性正则规则，第二层用 AI 语义分析</li><li><strong>自动修复</strong>：发现敏感信息后自动替换（如 <code>AKIA...</code> → <code>[REDACTED_AWS_KEY]</code>）</li><li><strong>备份回滚</strong>：修复前创建备份，出问题可以一键回退</li><li><strong>一键发布</strong>：扫描→修复→创建仓库→推送，全程自动化</li></ol>
+<h2>两层扫描机制</h2>
+<h3>第一层：确定性规则扫描（135 条）</h3>
+<p>按 6 大维度组织：</p>
+<table><thead><tr><th>维度</th><th>规则数</th><th>检测什么</th><th>示例</th></tr></thead><tbody><tr><td><strong>密钥与凭证</strong></td><td>100</td><td>API Key、Token、Secret</td><td>AWS Key 以 <code>AKIA</code> 开头，16 位字母数字</td></tr><tr><td><strong>数据库连接</strong></td><td>5</td><td>含密码的连接字符串</td><td><code>mysql://user:pass@host</code></td></tr><tr><td><strong>个人隐私</strong></td><td>8</td><td>邮箱、手机号、身份证</td><td>中国手机号 1[3-9]\d{9}</td></tr><tr><td><strong>内部基础设施</strong></td><td>6</td><td>内网 IP、内部域名</td><td><code>10.x.x.x</code>、<code>192.168.x.x</code></td></tr><tr><td><strong>文件黑名单</strong></td><td>12</td><td>不应公开的文件</td><td><code>.env</code>、<code>id_rsa</code>、<code>.npmrc</code></td></tr><tr><td><strong>Git 历史</strong></td><td>4</td><td>Git 中的密钥痕迹</td><td>大文件、二进制密钥</td></tr></tbody></table>
+<blockquote><p>Simplified from: <code>skills/ruyi-github-safe-publish/docs/scanning-rules.md</code></p></blockquote>
+<p>每条规则包含：</p>
+<ul><li><strong>正则表达式</strong>：精确匹配敏感信息的模式</li><li><strong>严重级别</strong>：CRITICAL / HIGH / MEDIUM / LOW</li><li><strong>熵值阈值</strong>：通用规则（如 <code>generic-api-key</code>）使用 Shannon 熵 ≥ 4.5 辅助判定</li></ul>
+<h3>第二层：AI 语义扫描</h3>
+<p>第一层用正则能抓住「长得像密钥」的字符串，但有些敏感信息「长得不像密钥」——比如一段注释中写着「我们的生产环境数据库地址是...」。AI 语义扫描能理解上下文，抓住正则遗漏的信息。</p>
+<h2>使用方式</h2>
+<pre><code># 完整流程：脱敏扫描 → 修复 → 发布到 GitHub
+/ruyi-github-safe-publish
+
+# 只扫描不修复，输出报告
+/ruyi-github-safe-publish --scan
+
+# 模拟运行：扫描 + 修复建议，不做实际修改
+/ruyi-github-safe-publish --dry-run
+
+# 附加 SEO 优化（描述、Topics、Badges）
+/ruyi-github-safe-publish --seo
+
+# 附加 CI 生成（自动生成 .github/workflows/test.yml）
+/ruyi-github-safe-publish --ci</code></pre>
+<blockquote><p>Simplified from: <code>skills/ruyi-github-safe-publish/skills/ruyi-github-safe-publish/SKILL.md</code></p></blockquote>
+<h2>测试体系</h2>
+<p>github-safe-publish 的测试覆盖率达到了 <strong>99%</strong>，7 个测试文件各有侧重：</p>
+<table><thead><tr><th>测试文件</th><th>验证什么</th><th>覆盖率</th></tr></thead><tbody><tr><td>test_detection</td><td>正则匹配准确性</td><td>100%</td></tr><tr><td>test_scanning_rules</td><td>规则文档与实际扫描一致</td><td>97%</td></tr><tr><td>test_skill_structure</td><td>SKILL.md 结构完整性</td><td>100%</td></tr><tr><td>test_convert</td><td>多平台转换正确性</td><td>100%</td></tr><tr><td>test_plugin_metadata</td><td>plugin.json 格式验证</td><td>100%</td></tr><tr><td>test_entropy</td><td>Shannon 熵计算</td><td>100%</td></tr><tr><td>test_conftest</td><td>测试基础设施</td><td>100%</td></tr></tbody></table>
+<blockquote><p>Simplified from: <code>skills/ruyi-github-safe-publish/CLAUDE.md</code></p></blockquote>
+<p><strong>134/135 条规则有端到端检测测试</strong>——唯一未覆盖的是 <code>large-file-in-history</code>（基于文件大小阈值，无正则可测）。</p>
+<h3>测试如何工作</h3>
+<p>测试框架从 <code>docs/scanning-rules.md</code> 提取正则表达式，然后用构造的测试数据验证每条规则都能正确匹配：</p>
+<pre><code># Simplified from: skills/ruyi-github-safe-publish/tests/conftest.py
+SKILL_MD = pathlib.Path(__file__).parent.parent / &quot;skills&quot; / &quot;ruyi-github-safe-publish&quot; / &quot;SKILL.md&quot;
+SCANNING_RULES_MD = pathlib.Path(__file__).parent.parent / &quot;docs&quot; / &quot;scanning-rules.md&quot;</code></pre>
+<p>这意味着：<strong>规则文档本身就是测试的数据源</strong>。如果规则文档改了但测试没跟着改，测试就会失败——实现了规则与测试的强绑定。</p>
+<hr>
+<div class="nav-links"><a href="#" onclick="showChapter(1);return false;">&larr; 上一章</a><a href="#" onclick="showChapter(3);return false;">下一章 &rarr;</a></div></div>
+<div class="chapter" id="ch3"><h1>第 4 章：project-walkthrough — 项目走读 Skill</h1>
+<h2>这个 Skill 做什么？</h2>
+<blockquote><p><strong>类比理解：</strong> 想象你刚加入一家公司，面对一个有 10 万行代码的项目。通常你需要找同事给你讲解、自己翻代码、画架构图……project-walkthrough 就像一个「自动讲解员」——它能读懂整个项目，然后生成一份带导航、测验和交互动画的「项目说明书」。</p></blockquote>
+<p>project-walkthrough 自动分析任何项目（代码库、研究报告、文档集合），然后生成结构化的走读文档。</p>
+<p>核心能力：</p>
+<ol><li><strong>智能分析</strong>：自动检测项目类型、规模、技术密度</li><li><strong>多深度输出</strong>：brief / medium / deep / all 四种深度</li><li><strong>多受众适配</strong>：普通读者（含类比卡片）或开发者（直接技术分析）</li><li><strong>多语言支持</strong>：中文 / 纯中文 / 英文 / 中英对照</li><li><strong>交互式 HTML</strong>：侧边栏导航、明暗主题切换、知识测验</li></ol>
+<h2>工作流程</h2>
+<p>整个流程分为 6 个阶段：</p>
+<pre><code>Phase 0: 分析确认 → 了解项目范围，确认输出方案
+Phase 1: 探索     → 深入阅读源代码和文档
+Phase 2: 规划     → 设计章节结构
+Phase 3: 生成     → 验证声明 → 写入内容（verify-before-write）
+Phase 4: 转换     → Markdown → 交互式 HTML
+Phase 5: 验证交付 → 自动化质量检查 + 交付</code></pre>
+<h3>关键设计：Verify-before-write</h3>
+<blockquote><p><strong>类比理解：</strong> 新闻报道最忌讳「先发再核实」。project-walkthrough 的原则是「先核实再写」——每个技术声明（代码示例、版本号、目录结构）必须先对照源文件验证，通过验证后才允许写入文档。</p></blockquote>
+<p>具体执行：</p>
+<ol><li>列出每个章节要写的技术声明</li><li>逐条读取源文件验证</li><li>构建验证清单（sources-manifest.json）</li><li>只有清单中的已验证声明才能写入章节</li></ol>
+<h2>使用方式</h2>
+<pre><code># 自动分析当前目录，推荐深度
+/ruyi-project-walkthrough
+
+# 指定项目路径和深度
+/ruyi-project-walkthrough /path/to/project --depth medium
+
+# 面向开发者，深度走读
+/ruyi-project-walkthrough --depth deep --audience dev
+
+# 纯英文输出
+/ruyi-project-walkthrough --lang en
+
+# 中英对照
+/ruyi-project-walkthrough --lang bilingual
+
+# 跳过确认，使用推荐默认值
+/ruyi-project-walkthrough --no-confirm</code></pre>
+<blockquote><p>Simplified from: <code>skills/ruyi-project-walkthrough/skills/ruyi-project-walkthrough/SKILL.md</code></p></blockquote>
+<h2>工具链</h2>
+<p>project-walkthrough 包含一套自研工具链：</p>
+<table><thead><tr><th>工具</th><th>用途</th></tr></thead><tbody><tr><td><strong>md_to_html.py</strong> (635 行)</td><td>Markdown → 交互式 HTML 转换器，支持侧边栏、主题切换、测验</td></tr><tr><td><strong>verify_sources.py</strong></td><td>验证 sources-manifest.json 中的声明是否准确</td></tr><tr><td><strong>import_graph.py</strong></td><td>提取源代码的 import 依赖图，生成准确的架构图</td></tr><tr><td><strong>convert.sh</strong></td><td>多平台格式转换（Cursor/Windsurf/OpenCode）</td></tr><tr><td><strong>check_update.sh</strong></td><td>检查是否有新版本可用</td></tr></tbody></table>
+<blockquote><p>Simplified from: <code>skills/ruyi-project-walkthrough/scripts/</code></p></blockquote>
+<h2>输出结构</h2>
+<p>每次走读生成一套完整的文档包：</p>
+<pre><code>ruyi_project_study_&lt;project-name&gt;/
+├── analysis.md              # 项目分析报告
+├── docs/
+│   ├── 01-overview.md       # 各章节 Markdown
+│   ├── 02-*.md
+│   ├── ...
+│   └── sources-manifest.json # 验证声明清单
+└── interactive/
+    ├── walkthrough-*.html    # 交互式 HTML（含测验）
+    └── verify-result.json    # 自动化验证结果</code></pre>
+<h2>测试覆盖</h2>
+<p>8 个测试文件覆盖了 skill 的各个维度：</p>
+<table><thead><tr><th>测试文件</th><th>验证什么</th></tr></thead><tbody><tr><td>test_adaptive_scope</td><td>自适应范围选择</td></tr><tr><td>test_release_sh</td><td>发布脚本</td></tr><tr><td>test_verify_sources</td><td>声明验证</td></tr><tr><td>test_lang_output</td><td>多语言输出</td></tr><tr><td>test_convert</td><td>格式转换</td></tr><tr><td>test_walkthrough_output</td><td>走读输出完整性</td></tr><tr><td>test_watermark</td><td>水印生成</td></tr><tr><td>test_import_graph</td><td>依赖图提取</td></tr></tbody></table>
+<blockquote><p>Simplified from: <code>skills/ruyi-project-walkthrough/tests/</code></p></blockquote>
+<hr>
+<div class="nav-links"><a href="#" onclick="showChapter(2);return false;">&larr; 上一章</a><a href="#" onclick="showChapter(4);return false;">下一章 &rarr;</a></div></div>
+<div class="chapter" id="ch4"><h1>第 5 章：构建与发布</h1>
+<h2>版本管理</h2>
+<blockquote><p><strong>类比理解：</strong> ruyi-skills 的版本管理像一个「主从同步」系统——每个 skill 有自己的版本号（像手机 App 的版本），合集也有一个总版本号（像手机系统版本）。两者独立更新，但通过发布脚本自动同步。</p></blockquote>
+<h3>双层版本架构</h3>
+<table><thead><tr><th>层级</th><th>存储位置</th><th>更新方式</th></tr></thead><tbody><tr><td>Skill 版本</td><td>SKILL.md frontmatter <code>version: &quot;X.Y.Z&quot;</code></td><td>随独立仓库迭代</td></tr><tr><td>合集版本</td><td>marketplace.json <code>&quot;version&quot;: &quot;X.Y.Z&quot;</code></td><td>release.sh 统一 bump</td></tr></tbody></table>
+<h3>release.sh 发布流程</h3>
+<p>发布一条新版本只需一个命令：</p>
+<pre><code>./scripts/release.sh patch    # 0.8.0 → 0.8.1（bug 修复）
+./scripts/release.sh minor    # 0.8.0 → 0.9.0（新功能）
+./scripts/release.sh major    # 0.8.0 → 1.0.0（重大更新）</code></pre>
+<blockquote><p>Simplified from: <code>scripts/release.sh</code></p></blockquote>
+<p>release.sh 自动完成以下步骤：</p>
+<pre><code>读取当前版本 → 计算新版本 → 更新 marketplace.json
+→ 更新 CHANGELOG.md → 更新 README 版本徽章
+→ git commit + tag → 推送到所有 remote</code></pre>
+<h2>多平台转换</h2>
+<blockquote><p><strong>类比理解：</strong> 同一部电影要适配不同播放平台——Netflix 用一种格式，Disney+ 用另一种。convert.sh 就像视频转码器，把 SKILL.md 转换成不同 AI 编程工具能识别的格式。</p></blockquote>
+<p>convert.sh 支持三种目标平台：</p>
+<table><thead><tr><th>平台</th><th>输出格式</th><th>说明</th></tr></thead><tbody><tr><td><strong>Cursor</strong></td><td><code>.cursor/rules/*.mdc</code></td><td>按 <code>## Step</code> 拆分为独立规则文件</td></tr><tr><td><strong>Windsurf</strong></td><td><code>.windsurfrules/*.md</code></td><td>完整 SKILL.md body 输出</td></tr><tr><td><strong>OpenCode</strong></td><td><code>.opencode/skills/*/SKILL.md</code></td><td>原样复制</td></tr></tbody></table>
+<pre><code>./scripts/convert.sh --cursor     # 只生成 Cursor 格式
+./scripts/convert.sh --windsurf   # 只生成 Windsurf 格式
+./scripts/convert.sh --opencode   # 只生成 OpenCode 格式
+./scripts/convert.sh --all        # 生成所有格式
+./scripts/convert.sh --check      # CI 中验证可转换性</code></pre>
+<blockquote><p>Simplified from: <code>scripts/convert.sh</code></p></blockquote>
+<p>所有转换输出到 gitignored 的 <code>dist/</code> 目录，不污染 Git 历史。</p>
+<h2>CI/CD 流水线</h2>
+<blockquote><p><strong>类比理解：</strong> CI/CD 就像一个「自动化质检流水线」——每次代码变更都会自动跑一轮检查，确认没有引入问题。</p></blockquote>
+<p>GitHub Actions 配置了 4 个并行 job：</p>
+<table><thead><tr><th>Job</th><th>运行环境</th><th>检查内容</th></tr></thead><tbody><tr><td>test-github-safe-publish</td><td>Ubuntu + macOS, Python 3.10 &amp; 3.12</td><td>pytest + 覆盖率 ≥ 95%</td></tr><tr><td>test-project-walkthrough</td><td>Ubuntu, Python 3.12</td><td>pytest</td></tr><tr><td>structure-check</td><td>Ubuntu, Python 3.12</td><td>marketplace.json 格式 + 自包含检查</td></tr><tr><td>collection-scripts</td><td>Ubuntu, Python 3.12</td><td>合集级测试 + convert.sh --check</td></tr></tbody></table>
+<pre><code># Simplified from: .github/workflows/test.yml
+# github-safe-publish 的覆盖率门禁
+- run: python -m pytest tests/ -v --tb=short --cov=tests --cov-report=term-missing --cov-fail-under=95</code></pre>
+<h2>Makefile 命令一览</h2>
+<table><thead><tr><th>命令</th><th>作用</th></tr></thead><tbody><tr><td><code>make test</code></td><td>运行所有 skill 测试</td></tr><tr><td><code>make ci</code></td><td>test + 结构验证 + 合集测试</td></tr><tr><td><code>make check</code></td><td>marketplace.json 格式 + 自包含检查</td></tr><tr><td><code>make release</code></td><td>版本 bump + 同步 + tag + push</td></tr><tr><td><code>make convert</code></td><td>生成 dist/ 多平台文件</td></tr><tr><td><code>make clean</code></td><td>清理 dist/</td></tr></tbody></table>
+<blockquote><p>Simplified from: <code>Makefile</code></p></blockquote>
+<hr>
+<div class="nav-links"><a href="#" onclick="showChapter(3);return false;">&larr; 上一章</a><a href="#" onclick="showChapter(5);return false;">下一章 &rarr;</a></div></div>
+<div class="chapter" id="ch5"><h1>第 6 章：质量保障</h1>
+<h2>测试体系</h2>
+<blockquote><p><strong>类比理解：</strong> 质量保障就像汽车的刹车系统——平时你可能感觉不到它的存在，但没有它你绝对不敢上路。ruyi-skills 的测试体系从三个层面保证每次变更都不会引入问题。</p></blockquote>
+<h3>三层测试结构</h3>
+<pre><code>合集级测试（tests/）
+├── test_check_self_contained.py   # 自包含原则验证
+├── test_convert.py                # 多平台转换正确性
+└── test_release_sh.py             # 发布脚本逻辑
+
+github-safe-publish 测试（7 个文件）
+├── conftest.py                    # 测试基础设施（fixture 定义）
+├── test_detection.py              # 正则匹配准确性
+├── test_scanning_rules.py         # 规则文档与实际扫描一致
+├── test_skill_structure.py        # SKILL.md 结构完整性
+├── test_convert.py                # 格式转换
+├── test_entropy.py                # Shannon 熵计算
+├── test_plugin_metadata.py        # plugin.json 格式
+└── test_conftest.py               # 测试基础设施自身测试
+
+project-walkthrough 测试（8 个文件）
+├── test_adaptive_scope.py         # 自适应范围
+├── test_release_sh.py             # 发布脚本
+├── test_verify_sources.py         # 声明验证
+├── test_lang_output.py            # 多语言输出
+├── test_convert.py                # 格式转换
+├── test_walkthrough_output.py     # 走读输出完整性
+├── test_watermark.py              # 水印生成
+└── test_import_graph.py           # 依赖图提取</code></pre>
+<blockquote><p>Simplified from: 各 tests/ 目录文件列表</p></blockquote>
+<p><strong>总计 18 个测试文件</strong>，覆盖合集级 + 两个 skill 的全部功能。</p>
+<h2>覆盖率门禁</h2>
+<blockquote><p><strong>类比理解：</strong> 覆盖率就像体检的检查项目清单——覆盖率 95% 意味着你的代码中有 95% 的行在测试中被「走了一遍」。如果新增代码没有对应的测试，覆盖率就会下降，CI 就会报错——提醒你「这个新功能还没测试」。</p></blockquote>
+<p>github-safe-publish 在 CI 中设置了 <strong>≥ 95% 的覆盖率门禁</strong>：</p>
+<pre><code># Simplified from: .github/workflows/test.yml:29
+- run: python -m pytest tests/ --cov=tests --cov-report=term-missing --cov-fail-under=95</code></pre>
+<p>当前实际覆盖率为 <strong>99%</strong>，远超门禁线。</p>
+<p>各测试模块覆盖率：</p>
+<table><thead><tr><th>模块</th><th>覆盖率</th></tr></thead><tbody><tr><td>test_detection</td><td>100%</td></tr><tr><td>test_skill_structure</td><td>100%</td></tr><tr><td>test_convert</td><td>100%</td></tr><tr><td>test_plugin_metadata</td><td>100%</td></tr><tr><td>test_conftest</td><td>100%</td></tr><tr><td>test_entropy</td><td>100%</td></tr><tr><td>test_scanning_rules</td><td>97%</td></tr></tbody></table>
+<blockquote><p>Simplified from: <code>skills/ruyi-github-safe-publish/CLAUDE.md</code></p></blockquote>
+<h2>规则与测试的强绑定</h2>
+<blockquote><p><strong>类比理解：</strong> 想象一家餐厅的菜单和质检报告——如果菜单上写了一道菜但质检没测过，或者质检测了一道菜单上没有的菜，都是问题。ruyi-skills 的规则和测试实现了这种强绑定。</p></blockquote>
+<p>github-safe-publish 的测试直接从 <code>docs/scanning-rules.md</code> 提取正则表达式来验证。这意味着：</p>
+<ol><li><strong>新增规则</strong>必须在 scanning-rules.md 中有正确定义</li><li><strong>测试自动覆盖</strong>新增的规则</li><li>如果规则文档改了但扫描逻辑没跟上，测试就会失败</li></ol>
+<p>134/135 条规则有端到端检测测试（唯一例外：<code>large-file-in-history</code>，基于文件大小阈值而非正则）。</p>
+<h2>结构验证</h2>
+<p>CI 中还运行两项结构验证：</p>
+<h3>自包含检查</h3>
+<pre><code>python3 scripts/check_self_contained.py</code></pre>
+<p>扫描所有 SKILL.md 和 references/ 文件，确保没有跨 skill 的链接。</p>
+<h3>Marketplace 格式验证</h3>
+<pre><code>python3 -c &quot;import json; json.load(open(&#x27;.claude-plugin/marketplace.json&#x27;))&quot;</code></pre>
+<p>确保 marketplace.json 是合法的 JSON 格式。</p>
+<h2>质量保障总结</h2>
+<table><thead><tr><th>维度</th><th>标准</th><th>现状</th></tr></thead><tbody><tr><td>测试文件数</td><td>≥ 15</td><td>18</td></tr><tr><td>代码覆盖率</td><td>≥ 95%</td><td>99%</td></tr><tr><td>规则测试覆盖</td><td>100%</td><td>134/135 (99.3%)</td></tr><tr><td>自包含检查</td><td>100% 通过</td><td>✓</td></tr><tr><td>CI 平台覆盖</td><td>Ubuntu + macOS</td><td>✓</td></tr><tr><td>Python 版本覆盖</td><td>3.10 + 3.12</td><td>✓</td></tr></tbody></table>
+<hr>
+<div class="nav-links"><a href="#" onclick="showChapter(4);return false;">&larr; 上一章</a><a href="#" onclick="showChapter(6);return false;">下一章 &rarr;</a></div></div>
+<div class="chapter" id="ch6"><h1>第 7 章：知识测验</h1>
+<p>通过以下 7 道题检验你对 ruyi-skills 项目的理解。</p>
+<div class="nav-links"><a href="#" onclick="showChapter(5);return false;">&larr; 上一章</a><a href="#" onclick="showChapter(8);return false;">下一章 &rarr;</a></div></div>
+<div class="chapter" id="ch-quiz">
+<h1>知识测验</h1>
+<div id="quiz-container"></div>
+<div class="nav-links"><span></span><span></span></div>
+</div>
+<script>
+(function(){
+var data=[{q:'ruyi-skills 的「Skill 自包含」原则意味着什么？',o:['每个 skill 必须用 Python 编写','SKILL.md 和 references/ 中的链接不得指向 skill 目录外的文件','所有 skill 必须放在同一个文件中','每个 skill 必须有自己的 CI 配置'],c:0,e:'P1 自包含原则要求每个 skill 能被独立提取和使用。SKILL.md 和 references/ 内的所有链接不得指向 skill 目录外，由 `check_self_contained.py` 在 CI 中自动检查。 ---'},{q:'github-safe-publish 的第一层扫描有多少条确定性规则？',o:['50 条','85 条','135 条','200 条'],c:0,e:'6 大维度共 135 条规则：密钥凭证 100 + 数据库连接 5 + 个人隐私 8 + 内部基础设施 6 + 文件黑名单 12 + Git 历史 4 = 135。 ---'},{q:'project-walkthrough 的「verify-before-write」架构是什么意思？',o:['先写完所有章节，最后再验证','只验证代码示例，其他内容不需要验证','每个技术声明必须先对照源文件验证，通过后才能写入文档','由用户手动验证所有声明'],c:0,e:'project-walkthrough 的核心设计是「验证清单是写入许可证」——先构建 sources-manifest.json，只有标记为 verified: true 的声明才能出现在章节内容中。不可验证的声明会被丢弃。 ---'},{q:'convert.sh 支持哪三种目标平台？',o:['GitHub、GitLab、Bitbucket','Cursor、Windsurf、OpenCode','VS Code、IntelliJ、Vim','Docker、Kubernetes、AWS'],c:0,e:'convert.sh 将 SKILL.md 转换为三种格式：Cursor（.cursor/rules/*.mdc）、Windsurf（.windsurfrules/*.md）、OpenCode（.opencode/skills/*/SKILL.md），输出到 gitignored 的 dist/ 目录。 ---'},{q:'ruyi-skills 的多品牌架构中，有几个品牌仓库？通过什么工具生成？',o:['2 个品牌，手动复制','3 个品牌，通过 git subtree','4 个品牌，通过 brand-sync-tool','5 个品牌，通过 CI 自动部署'],c:0,e:'ruyi-skills 是唯一开发仓库，通过独立的 brand-sync-tool 生成 ruyi、paoding、davinci、doraemon 四个品牌仓库。每个品牌有独立的 Git 历史，不作为 remote 添加到本仓库。 ---'},{q:'CI 中 github-safe-publish 的覆盖率门禁是多少？',o:['≥ 80%','≥ 90%','≥ 95%','≥ 99%'],c:0,e:'CI 配置中明确设置 `--cov-fail-under=95`，要求测试覆盖率不低于 95%。当前实际覆盖率为 99%，远超门禁线。 ---'},{q:'双层版本管理中，Skill 版本和合集版本分别存储在哪里？',o:['都在 package.json 中','都在 CHANGELOG.md 中','Skill 版本在 SKILL.md frontmatter，合集版本在 marketplace.json','Skill 版本在 README.md，合集版本在 Makefile'],c:0,e:'P5 双层版本原则：每个 skill 的版本定义在各自 SKILL.md 的 YAML frontmatter 中（如 `version: "0.7.0"`），合集版本定义在 `.claude-plugin/marketplace.json` 中（如 `"version": "0.8.0"`）。release.sh 负责 bump 合集版本。 --- [← 上一章：质量保障](06-quality-gates.md)'}];
+var container=document.getElementById('quiz-container');
+data.forEach(function(item,idx){
+  var wrap=document.createElement('div');wrap.style.cssText='margin:24px 0;padding:20px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px';
+  var qTitle=document.createElement('div');qTitle.style.cssText='font-weight:600;margin-bottom:12px;font-size:16px';
+  qTitle.textContent=(idx+1)+'. '+item.q;wrap.appendChild(qTitle);
+  item.o.forEach(function(opt,oi){
+    var btn=document.createElement('button');
+    btn.style.cssText='display:block;width:100%;text-align:left;padding:10px 16px;margin:6px 0;background:var(--card-bg);border:1px solid var(--card-border);border-radius:6px;cursor:pointer;font-size:14px;color:var(--text)';
+    btn.textContent=String.fromCharCode(65+oi)+'. '+opt;
+    btn.addEventListener('click',function(){
+      var buttons=wrap.querySelectorAll('button');buttons.forEach(function(b){b.disabled=true;b.style.cursor='default'});
+      if(oi===item.c){btn.style.background='#059669';btn.style.color='#fff'}
+      else{btn.style.background='#dc2626';btn.style.color='#fff';buttons[item.c].style.background='#059669';buttons[item.c].style.color='#fff'}
+      var fb=document.createElement('div');fb.style.cssText='margin-top:12px;padding:12px;background:var(--quote-bg);border-left:4px solid var(--quote-border);font-size:14px;line-height:1.6';
+      fb.textContent=item.e;wrap.appendChild(fb);
+    });
+    wrap.appendChild(btn);
+  });
+  container.appendChild(wrap);
+});
+})();
+</script>
+<div class="chapter" id="ch-watermark">
+<h1>关于本报告</h1>
+<div style="text-align:center;padding:40px 20px;">
+<p style="font-size:15px;color:var(--text);opacity:0.85;">生成时间：2026-05-28 08:47 UTC</p>
+<p style="font-size:15px;color:var(--text);margin-top:16px;">使用工具：<strong>project-walkthrough</strong></p>
+<p style="margin-top:12px;"><a href="https://github.com/zwyin/ruyi-skills" target="_blank">https://github.com/zwyin/ruyi-skills</a></p>
+<p style="font-size:14px;color:var(--text);opacity:0.7;margin-top:24px;">欢迎大家使用、讨论和反馈！</p>
+</div>
+<div class="nav-links"><span></span><span></span></div>
+</div>
+</main>
+<script>
+function toggleTheme(){var d=document.documentElement,isDark=d.getAttribute('data-theme')==='dark';d.setAttribute('data-theme',isDark?'light':'dark');localStorage.setItem('theme',isDark?'light':'dark');document.querySelector('.theme-toggle').textContent=isDark?'&#9788;':'&#9790;'}
+(function(){var s=localStorage.getItem('theme');if(s)document.documentElement.setAttribute('data-theme',s);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark');document.querySelector('.theme-toggle').textContent=document.documentElement.getAttribute('data-theme')==='dark'?'&#9788;':'&#9790;'})();
+function showChapter(i){document.querySelectorAll('.chapter').forEach(function(c){c.classList.remove('active')});document.querySelectorAll('.sidebar a').forEach(function(a){a.classList.remove('active')});if(document.querySelectorAll('.chapter')[i])document.querySelectorAll('.chapter')[i].classList.add('active');if(document.querySelectorAll('.sidebar a')[i])document.querySelectorAll('.sidebar a')[i].classList.add('active');window.scrollTo(0,0);document.getElementById('sidebar').classList.remove('open')}
+showChapter(0);
+</script>
+</body></html>
