@@ -260,10 +260,20 @@ Generate all three depth levels sequentially. Starts with brief, then medium, th
 
 ## Output Structure
 
-The output directory name MUST use the skill's name prefix: `<prefix>_project_study_<project-name>/`, where `<prefix>` comes from the `name` field in frontmatter (e.g., `ruyi` from `doraemon-project-walkthrough` → `ruyi_project_study_my-codebase/`).
+The output directory name MUST be computed by the script to ensure deterministic naming:
+
+```bash
+bash ../../../scripts/get_output_dir.sh --prefix <prefix> --project <project-name> --depth <depth> --lang <lang> --audience <audience>
+```
+
+where `<prefix>` comes from the `name` field in frontmatter (e.g., `ruyi` from `doraemon-project-walkthrough`).
+
+This produces: `<prefix>_project_study_<project-name>-<depth>-<lang>-<audience>/`
+
+Do NOT construct the directory name manually — always call the script to avoid naming inconsistencies.
 
 ```
-<prefix>_project_study_<project-name>/
+<prefix>_project_study_<project-name>-<depth>-<lang>-<audience>/
 ├── analysis.md                          ← Content analysis (Phase 0)
 ├── docs/
 │   ├── 01-overview.md              ← Brief level (flat, no subdirectory)
