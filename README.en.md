@@ -6,7 +6,7 @@ Claude Code skills that simplify complex tasks — one command to rule them all.
 
 [中文](README.md)
 
-> **Ruyi** (如意): a Chinese cultural symbol meaning "as you wish." Every skill in this collection turns complex, time-consuming tasks into a single command.
+> **Doraemon** — Claude Code skills that simplify complex tasks into single commands.
 
 ## Install Skills
 
@@ -65,7 +65,7 @@ claude --plugin-dir ./doraemon-skills
 
 Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI), auto-fix, backup & rollback, end-to-end workflow.
 
-[![version](https://img.shields.io/badge/version-0.7.0-blue)](skills/github-safe-publish/skills/github-safe-publish/SKILL.md)
+[![version](https://img.shields.io/badge/version-0.7.0-blue)](skills/doraemon-github-safe-publish/skills/doraemon-github-safe-publish/SKILL.md)
 
 **Covers 6 dimensions**: Secrets & Credentials (100 rules), Database Connections (5 rules), PII (8 rules), Internal Infrastructure (6 rules), File Blacklist (12 rules), Git History (4 rules).
 
@@ -103,7 +103,7 @@ Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI)
 
 Project walkthrough generator — multi-depth, multi-audience, multi-language, outputs markdown + interactive HTML.
 
-[![version](https://img.shields.io/badge/version-1.6.1-blue)](skills/project-walkthrough/skills/project-walkthrough/SKILL.md)
+[![version](https://img.shields.io/badge/version-1.6.1-blue)](skills/doraemon-project-walkthrough/skills/doraemon-project-walkthrough/SKILL.md)
 
 ```bash
 # Auto-analyze current directory, recommend depth

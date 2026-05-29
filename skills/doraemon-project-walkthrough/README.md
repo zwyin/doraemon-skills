@@ -1,6 +1,6 @@
 # Project Walkthrough Generator
 
-[![CI](https://github.com/zwyin/project-walkthrough-skill/actions/workflows/test.yml/badge.svg)](https://github.com/zwyin/project-walkthrough-skill/actions/workflows/test.yml)
+[![CI](https://github.com/zwyin/doraemon-skills-skill/actions/workflows/test.yml/badge.svg)](https://github.com/zwyin/doraemon-skills-skill/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.6.1-blue.svg)]
 
@@ -25,7 +25,7 @@
 
 ```bash
 # 1. 添加 marketplace
-/plugin marketplace add zwyin/project-walkthrough-skill
+/plugin marketplace add zwyin/doraemon-skills-skill
 
 # 2. 安装插件
 /plugin install project-walkthrough@project-walkthrough-skill
@@ -38,7 +38,7 @@
 将本仓库 clone 到本地，然后在 Claude Code 中指定 plugin 目录：
 
 ```bash
-git clone https://github.com/zwyin/project-walkthrough-skill.git
+git clone https://github.com/zwyin/doraemon-skills-skill.git
 claude --plugin-dir ./project-walkthrough-skill  # 保留完整目录结构，路径引用不会断裂
 ```
 
@@ -48,8 +48,8 @@ claude --plugin-dir ./project-walkthrough-skill  # 保留完整目录结构，�
 |------|---------|
 | **Cursor** | 复制 `cursor/project-walkthrough.mdc` 到项目的 `.cursor/rules/` 目录 |
 | **Windsurf** | 复制 `.windsurf/rules/project-walkthrough.md` 到项目的 `.windsurf/rules/` 目录，或全局复制到 `~/.codeium/windsurf/rules/` |
-| **OpenCode** | 复制 `.opencode/skills/project-walkthrough/` 到项目的 `.opencode/skills/` 目录，或全局复制到 `~/.config/opencode/skills/` |
-| **Gemini CLI** | `gemini skills install https://github.com/zwyin/project-walkthrough-skill.git --path skills/project-walkthrough` |
+| **OpenCode** | 复制 `.opencode/skills/doraemon-project-walkthrough/` 到项目的 `.opencode/skills/` 目录，或全局复制到 `~/.config/opencode/skills/` |
+| **Gemini CLI** | `gemini skills install https://github.com/zwyin/doraemon-skills-skill.git --path skills/project-walkthrough` |
 
 > **注意：** Python 辅助脚本（`verify_sources.py`、`import_graph.py`）需要 Python 3 环境。在非 Claude Code 平台上，部分依赖脚本的功能可能需要手动调整路径。
 
@@ -99,7 +99,7 @@ claude --plugin-dir ./project-walkthrough-skill  # 保留完整目录结构，�
 
 **语法规则：** 空格分隔（`--depth medium`），不支持 `--depth=medium`。无效值回退到默认。重复 flag 取最后一次。flags 大小写敏感。
 
-> 详细解析规则见 `skills/project-walkthrough/SKILL.md` Usage 部分。
+> 详细解析规则见 `skills/doraemon-project-walkthrough/SKILL.md` Usage 部分。
 
 ## 偏好配置（EXTEND.md）
 

@@ -1,6 +1,6 @@
 # GitHub Safe Publish
 
-[![version](https://img.shields.io/badge/version-0.7.0-blue)](skills/github-safe-publish/SKILL.md) [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![tests](https://img.shields.io/badge/tests-235%20passing-brightgreen)](tests/) [![platform](https://img.shields.io/badge/platform-Claude%20Code-purple)](https://claude.ai/code)
+[![version](https://img.shields.io/badge/version-0.7.0-blue)](skills/doraemon-github-safe-publish/SKILL.md) [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![tests](https://img.shields.io/badge/tests-235%20passing-brightgreen)](tests/) [![platform](https://img.shields.io/badge/platform-Claude%20Code-purple)](https://claude.ai/code)
 
 Safely publish local Git projects to GitHub public repositories with two-layer desensitization scanning (135 deterministic rules + AI semantic analysis), auto-fix, backup, and end-to-end publishing workflow.
 
@@ -90,7 +90,7 @@ Select **Browse and install plugins** → Select **github-safe-publish** → Sel
 
 ```bash
 # 1. Add marketplace
-/plugin marketplace add zwyin/github-safe-publish
+/plugin marketplace add zwyin/doraemon-skills
 
 # 2. Install plugin
 /plugin install github-safe-publish@github-safe-publish
@@ -99,13 +99,13 @@ Select **Browse and install plugins** → Select **github-safe-publish** → Sel
 ### Option 3: Ask the Agent
 
 ```
-Please install github-safe-publish from github.com/zwyin/github-safe-publish
+Please install github-safe-publish from github.com/zwyin/doraemon-skills
 ```
 
 ### Option 4: Quick Install (npx)
 
 ```bash
-npx skills add zwyin/github-safe-publish
+npx skills add zwyin/doraemon-skills
 ```
 
 ### Option 5: ClawHub
@@ -117,11 +117,11 @@ clawhub install github-safe-publish
 ### Option 6: Manual
 
 ```bash
-git clone https://github.com/zwyin/github-safe-publish.git
+git clone https://github.com/zwyin/doraemon-skills.git
 claude --plugin-dir ./github-safe-publish
 ```
 
-Or copy `skills/github-safe-publish/SKILL.md` to your project's skill directory.
+Or copy `skills/doraemon-github-safe-publish/SKILL.md` to your project's skill directory.
 
 ### Other Platforms
 
