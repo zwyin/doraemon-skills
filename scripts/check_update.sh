@@ -11,7 +11,7 @@ CACHE_DIR="${HOME}/.cache/skill-update"
 CACHE_FILE="${CACHE_DIR}/project-walkthrough.json"
 
 REPO="zwyin/doraemon-skills"
-PLUGIN_KEY="doraemon-skills"
+PLUGIN_KEY="doraemon-skills@doraemon-skills"
 CHECK_INTERVAL_HOURS=24
 
 # --- 1. Read local version ---
