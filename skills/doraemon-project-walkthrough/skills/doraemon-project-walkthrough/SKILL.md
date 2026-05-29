@@ -260,17 +260,19 @@ Generate all three depth levels sequentially. Starts with brief, then medium, th
 
 ## Output Structure
 
-The output directory name MUST be computed by the script to ensure deterministic naming:
+The output directory name follows this deterministic pattern:
 
-```bash
-bash ../../../scripts/get_output_dir.sh --prefix <prefix> --project <project-name> --depth <depth> --lang <lang> --audience <audience>
+```
+<prefix>_project_study_<project-name>-<depth>-<lang>-<audience>/
 ```
 
-where `<prefix>` comes from the `name` field in frontmatter (e.g., `ruyi` from `doraemon-project-walkthrough`).
+- `<prefix>` — from the `name` field in frontmatter (e.g., `ruyi` from `doraemon-project-walkthrough`)
+- `<project-name>` — sanitized project directory name (lowercase, hyphens for spaces/special chars)
+- `<depth>` — `brief`, `medium`, or `deep`
+- `<lang>` — `zh` or `en`
+- `<audience>` — `general`, `dev`, or `contrib`
 
-This produces: `<prefix>_project_study_<project-name>-<depth>-<lang>-<audience>/`
-
-Do NOT construct the directory name manually — always call the script to avoid naming inconsistencies.
+Construct the name by concatenating these parts with `_project_study_` and `-` separators. Do NOT omit any segment.
 
 ```
 <prefix>_project_study_<project-name>-<depth>-<lang>-<audience>/
