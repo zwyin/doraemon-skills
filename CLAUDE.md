@@ -19,13 +19,13 @@ SKILL.md 及 references/ 内不得链接 skill 目录外的文件。每个 skill
 本地代理拦截 HTTPS，需显式绕过：
 
 ```bash
-git -c http.proxy="" -c https.proxy="" push origin main
+git -c http.proxy="" -c https.proxy="" push ruyi main
 ```
 
 ## 多品牌架构
 
-doraemon-skills 是从 doraemon-skills 生成的品牌仓库。其他品牌仓库（paoding/davinci/doraemon）
-通过独立的 brand-sync-tool 从 doraemon-skills 生成，各自拥有独立的 git 历史。
+ruyi-skills 是唯一开发仓库。其他品牌仓库（paoding/davinci/doraemon）
+通过独立的 brand-sync-tool 从 ruyi-skills 生成，各自拥有独立的 git 历史。
 
 转换工具不在本仓库中，维护在 private 仓库。
 
@@ -33,6 +33,6 @@ doraemon-skills 是从 doraemon-skills 生成的品牌仓库。其他品牌仓�
 
 | Remote | GitHub 仓库 | 用途 |
 |--------|-----------|------|
-| origin | zwyin/doraemon-skills | 推送 |
+| ruyi | zwyin/ruyi-skills | 开发 + 推送 |
 
 其他品牌通过 brand-sync-tool 生成，不再作为 remote 添加到本仓库。

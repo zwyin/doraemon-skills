@@ -2,7 +2,7 @@
 
 ## 待办
 
-- [ ] Marketplace 注册：在 Claude Code 中执行 `/plugin marketplace add zwyin/doraemon-skills-skill`
+- [ ] Marketplace 注册：在 Claude Code 中执行 `/plugin marketplace add zwyin/project-walkthrough-skill`
 
 ## 已完成
 

@@ -5,8 +5,8 @@
   "author": {
     "name": "zwyin"
   },
-  "homepage": "https://github.com/zwyin/doraemon-skills-skill",
-  "repository": "https://github.com/zwyin/doraemon-skills-skill",
+  "homepage": "https://github.com/zwyin/project-walkthrough-skill",
+  "repository": "https://github.com/zwyin/project-walkthrough-skill",
   "license": "MIT",
   "keywords": ["walkthrough", "documentation", "code-analysis", "architecture", "learning"],
   "skills": "./skills/"

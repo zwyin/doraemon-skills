@@ -225,7 +225,7 @@ Summary: 1 passed, 1 failed, 2 total
 
 ```bash
 # 1. 添加 marketplace
-/plugin marketplace add zwyin/doraemon-skills-skill
+/plugin marketplace add zwyin/project-walkthrough-skill
 
 # 2. 安装插件
 /plugin install project-walkthrough@project-walkthrough-skill

@@ -266,7 +266,7 @@ The output directory name follows this deterministic pattern:
 <prefix>_project_study_<project-name>-<depth>-<lang>-<audience>/
 ```
 
-- `<prefix>` — from the `name` field in frontmatter (e.g., `doraemon` from `doraemon-project-walkthrough`)
+- `<prefix>` — from the `name` field in frontmatter (e.g., `ruyi` from `doraemon-project-walkthrough`)
 - `<project-name>` — sanitized project directory name (lowercase, hyphens for spaces/special chars)
 - `<depth>` — `brief`, `medium`, or `deep`
 - `<lang>` — `zh` or `en`

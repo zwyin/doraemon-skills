@@ -6,7 +6,7 @@ Claude Code skills that simplify complex tasks — one command to rule them all.
 
 [中文](README.md)
 
-> **Doraemon** — Claude Code skills that simplify complex tasks into single commands.
+> **Ruyi** (如意): a Chinese cultural symbol meaning "as you wish." Every skill in this collection turns complex, time-consuming tasks into a single command.
 
 ## Install Skills
 
@@ -46,8 +46,8 @@ npx skills add zwyin/doraemon-skills
 > Not yet published to ClawHub registry. Track progress at [github.com/zwyin/doraemon-skills](https://github.com/zwyin/doraemon-skills).
 
 ```bash
-clawhub install github-safe-publish
-clawhub install project-walkthrough
+clawhub install doraemon-github-safe-publish
+clawhub install doraemon-project-walkthrough
 ```
 
 ### Option 6: Manual Install
@@ -61,7 +61,7 @@ claude --plugin-dir ./doraemon-skills
 
 ## Skills
 
-### github-safe-publish
+### doraemon-github-safe-publish
 
 Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI), auto-fix, backup & rollback, end-to-end workflow.
 
@@ -104,7 +104,7 @@ Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI)
 /doraemon-github-safe-publish --seo --ci
 
 # Scan only — output report, no fix, no publish
-/doraemon-github-safe-publish --scan-only
+/doraemon-github-safe-publish --scan
 
 # Dry run — scan + fix suggestions, but no actual changes
 /doraemon-github-safe-publish --dry-run
@@ -113,14 +113,14 @@ Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI)
 | Flag | Description | Mutual Exclusion |
 |------|-------------|------------------|
 | (none) | Core workflow: scan + publish | — |
-| `--seo` | Add SEO optimization (description, topics, badges, README) | Cannot combine with `--scan-only` / `--dry-run` |
-| `--ci` | Add CI generation (auto-detect and generate workflow) | Cannot combine with `--scan-only` / `--dry-run` |
-| `--scan-only` | Scan only, output report | Cannot combine with `--seo` / `--ci` / `--dry-run` |
-| `--dry-run` | Dry run: scan + suggestions, no changes | Cannot combine with `--seo` / `--ci` / `--scan-only` |
+| `--seo` | Add SEO optimization (description, topics, badges, README) | Cannot combine with `--scan` / `--dry-run` |
+| `--ci` | Add CI generation (auto-detect and generate workflow) | Cannot combine with `--scan` / `--dry-run` |
+| `--scan` | Scan only, output report | Cannot combine with `--seo` / `--ci` / `--dry-run` |
+| `--dry-run` | Dry run: scan + suggestions, no changes | Cannot combine with `--seo` / `--ci` / `--scan` |
 
 ---
 
-### project-walkthrough
+### doraemon-project-walkthrough
 
 Project walkthrough generator — multi-depth, multi-audience, multi-language, outputs markdown + interactive HTML.
 
