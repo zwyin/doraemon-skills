@@ -27,12 +27,12 @@ GitHub Safe Publish combines **deterministic rule scanning** (135 regex rules ac
 ## Usage
 
 ```
-/doraemon-github-safe-publish                    # Full flow: scan → fix → publish
-/doraemon-github-safe-publish --scan-only        # Scan only, output report, no fix/publish
-/doraemon-github-safe-publish --dry-run          # Scan + show fix suggestions, no actual changes
-/doraemon-github-safe-publish --seo              # Full flow + SEO optimization
-/doraemon-github-safe-publish --ci               # Full flow + CI workflow generation
-/doraemon-github-safe-publish --seo --ci         # Everything
+/doraemon-github-safe-publish               # Full flow: scan → fix → publish
+/doraemon-github-safe-publish --scan-only   # Scan only, output report, no fix/publish
+/doraemon-github-safe-publish --dry-run     # Scan + show fix suggestions, no actual changes
+/doraemon-github-safe-publish --seo         # Full flow + SEO optimization
+/doraemon-github-safe-publish --ci          # Full flow + CI workflow generation
+/doraemon-github-safe-publish --seo --ci    # Everything
 ```
 
 ### Flow Control
@@ -84,41 +84,41 @@ The real differentiator isn't rule count — it's what happens **after** detecti
 
 ### Option 1: Browse UI
 
-Select **Browse and install plugins** → Select **github-safe-publish** → Select **Install now**
+Select **Browse and install plugins** → Select **doraemon-skills** → Select **Install now**
 
 ### Option 2: Marketplace Install
 
 ```bash
 # 1. Add marketplace
-/plugin marketplace add zwyin/doraemon-github-safe-publish
+/plugin marketplace add zwyin/doraemon-skills
 
 # 2. Install plugin
-/plugin install github-safe-publish@github-safe-publish
+/plugin install doraemon-skills@doraemon-skills
 ```
 
 ### Option 3: Ask the Agent
 
 ```
-Please install github-safe-publish from github.com/zwyin/doraemon-github-safe-publish
+Please install doraemon-skills from github.com/zwyin/doraemon-skills
 ```
 
 ### Option 4: Quick Install (npx)
 
 ```bash
-npx skills add zwyin/doraemon-github-safe-publish
+npx skills add zwyin/doraemon-skills
 ```
 
 ### Option 5: ClawHub
 
 ```bash
-clawhub install github-safe-publish
+clawhub install doraemon-skills
 ```
 
 ### Option 6: Manual
 
 ```bash
-git clone https://github.com/zwyin/github-safe-publish.git
-claude --plugin-dir ./doraemon-github-safe-publish
+git clone https://github.com/zwyin/doraemon-skills.git
+claude --plugin-dir ./doraemon-skills
 ```
 
 Or copy `skills/doraemon-github-safe-publish/SKILL.md` to your project's skill directory.
@@ -147,10 +147,10 @@ bash scripts/validate_skill.sh
 ## Project Structure
 
 ```
-github-safe-publish/
+doraemon-github-safe-publish/
 ├── .claude-plugin/          # Plugin metadata
 ├── skills/                  # Skill definitions
-│   └── github-safe-publish/
+│   └── doraemon-github-safe-publish/
 │       └── SKILL.md         # Single source of truth
 ├── docs/
 │   ├── scanning-rules.md    # Complete regex reference (135 rules)
