@@ -9,7 +9,7 @@ labels: bug
 What went wrong?
 
 **Steps to reproduce**
-1. Run `/ruyi-project-walkthrough ...`
+1. Run `/doraemon-project-walkthrough ...`
 2. ...
 
 **Expected behavior**
