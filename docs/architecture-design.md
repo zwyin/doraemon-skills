@@ -1,9 +1,9 @@
-# ruyi-skills 架构设计
+# doraemon-skills 架构设计
 
 ## 目录结构
 
 ```
-ruyi-skills/
+doraemon-skills/
 ├── .claude-plugin/
 │   └── marketplace.json            # 合集级 marketplace，列出所有 skills
 ├── .github/
@@ -95,7 +95,7 @@ CI（`.github/workflows/test.yml`）包含 4 个 job：
 
 ### P7. 品牌分发
 
-ruyi-skills 是唯一开发仓库。通过外部 [brand-sync-tool](https://github.com/zwyin/brand-sync-tool) 自动生成各品牌仓库（paoding / davinci / doraemon）。
+doraemon-skills 是唯一开发仓库。通过外部 [brand-sync-tool](https://github.com/zwyin/brand-sync-tool) 自动生成各品牌仓库（paoding / davinci / doraemon）。
 
 brand-sync-tool 负责：
 - 克隆远程品牌仓库（增量）或创建新仓库
@@ -106,18 +106,18 @@ brand-sync-tool 负责：
 
 ### P8. 已归档仓库
 
-`github-safe-publish` 和 `project-walkthrough-skill` 两个独立仓库已 archived。所有代码维护统一在 ruyi-skills 仓库中进行。
+`github-safe-publish` 和 `project-walkthrough-skill` 两个独立仓库已 archived。所有代码维护统一在 doraemon-skills 仓库中进行。
 
 ## 开发流程
 
 ```
-修改代码/文档（在 ruyi-skills 仓库中）
+修改代码/文档（在 doraemon-skills 仓库中）
     ↓
 make test && make check            # 运行测试 + 结构验证
     ↓
 make convert                       # 重新生成平台文件（如需）
     ↓
-git commit && git push             # 提交推送到 ruyi-skills
+git commit && git push             # 提交推送到 doraemon-skills
     ↓
 cd brand-sync-tool && bash sync.sh # 分发到品牌仓库
 ```

@@ -41,7 +41,7 @@
 ### #5 开发流程仍引用 subtree 和 sync-all.sh
 - **位置**: 文档开发流程图（原第 112-119 行）
 - **问题**: `日常迭代 → 独立仓库 → subtree pull → sync-all.sh`，全部已废弃
-- **修改方案**: 替换为 `直接在 ruyi-skills 开发 → convert.sh → git commit → brand-sync-tool 分发`
+- **修改方案**: 替换为 `直接在 doraemon-skills 开发 → convert.sh → git commit → brand-sync-tool 分发`
 - **风险**: 无 — 纯文档修改
 
 ### #6 目录结构 skill 名错误
@@ -53,7 +53,7 @@
 ### #7 P5 双层版本引用 subtree
 - **位置**: 文档 P5（原第 82-84 行）
 - **问题**: "随 subtree 同步" 措辞已过时
-- **修改方案**: 改为"直接在 ruyi-skills 仓库中维护"
+- **修改方案**: 改为"直接在 doraemon-skills 仓库中维护"
 - **风险**: 无 — 纯文档措辞修改
 
 ---
@@ -93,7 +93,7 @@
 - **风险**: 无
 
 ### #13 新增：已归档仓库章节
-- **修改方案**: 说明 github-safe-publish 和 project-walkthrough-skill 已 archived，代码统一维护在 ruyi-skills
+- **修改方案**: 说明 github-safe-publish 和 project-walkthrough-skill 已 archived，代码统一维护在 doraemon-skills
 - **风险**: 无
 
 ### #14 brand-sync-tool README 补充

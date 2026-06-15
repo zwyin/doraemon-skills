@@ -3,14 +3,14 @@
 ## Development Setup
 
 ```bash
-git clone https://github.com/zwyin/ruyi-skills.git
-cd ruyi-skills
+git clone https://github.com/zwyin/doraemon-skills.git
+cd doraemon-skills
 pip install pytest jsonschema pyyaml
 ```
 
 ## Project Structure
 
-- `skills/ruyi-project-walkthrough/SKILL.md` — Canonical skill definition (single source of truth)
+- `skills/doraemon-project-walkthrough/SKILL.md` — Canonical skill definition (single source of truth)
 - `docs/` — Reference docs (chapter templates, exploration protocol, HTML spec)
 - `scripts/` — Helper tools (`convert.sh`, `verify_sources.py`, `import_graph.py`)
 - `tests/` — Test suite (pytest)
@@ -22,7 +22,7 @@ pip install pytest jsonschema pyyaml
 
 Only modify these files directly:
 
-- `skills/ruyi-project-walkthrough/SKILL.md` — Skill logic, parameters, process
+- `skills/doraemon-project-walkthrough/SKILL.md` — Skill logic, parameters, process
 - `docs/chapter-templates.md` — Project type templates
 - `docs/exploration-protocol.md` — Project type detection
 - `docs/html-reference.md` — HTML output spec

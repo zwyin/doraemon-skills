@@ -1,10 +1,10 @@
 # 文档修改大纲
 
-分两部分：ruyi-skills 和 brand-sync-tool 各自要改什么。
+分两部分：doraemon-skills 和 brand-sync-tool 各自要改什么。
 
 ---
 
-## 一、ruyi-skills/docs/architecture-design.md
+## 一、doraemon-skills/docs/architecture-design.md
 
 ### A. 删除
 
@@ -21,10 +21,10 @@
 | # | 原章节 | 修改内容 |
 |---|--------|---------|
 | 1 | 目录结构 | skill 名从 `github-safe-publish/` 改为 `doraemon-github-safe-publish/`（已发生的重命名，文档需跟上）；`project-walkthrough/` 改为 `doraemon-project-walkthrough/`；删除不存在的文件；补充实际存在的 `.claude-plugin/`、根 `tests/`、`scripts/convert.sh`、`scripts/release.sh`、`scripts/check_self_contained.py` |
-| 2 | P5 双层版本 | 去掉原文中"随 subtree 同步"的措辞，改为"直接在 ruyi-skills 仓库中维护" |
+| 2 | P5 双层版本 | 去掉原文中"随 subtree 同步"的措辞，改为"直接在 doraemon-skills 仓库中维护" |
 | 3 | P7 生成文件隔离 → 改为 P5 平台文件管理 | 两个 skill 的平台文件策略不同，需分述：doraemon-project-walkthrough 的 cursor/.windsurf/.opencode 文件已 git 跟踪并提交在 skill 目录内；doraemon-github-safe-publish 的平台文件在 dist/ 下但未被 git 跟踪。convert.sh 输出到根 dist/（gitignored），各 skill 目录内的平台文件是 convert.sh 或 brand-sync-tool 生成后手动提交的 |
 | 4 | P8 质量门禁 | 更新为实际 CI 内容：4 个 job — test-github-safe-publish（矩阵 ubuntu+macOS, python 3.10+3.12, 覆盖率 95%）、test-project-walkthrough（ubuntu, python 3.12）、structure-check（marketplace.json 校验 + skill 自包含检查）、collection-scripts |
-| 5 | 开发流程 | 简化为：所有开发在 ruyi-skills 完成，不再有 subtree 流程 |
+| 5 | 开发流程 | 简化为：所有开发在 doraemon-skills 完成，不再有 subtree 流程 |
 | 6 | Makefile 命令表 | 保留可用命令（test/ci/check/convert/clean）。`make release` 调用的 release.sh 末尾引用不存在的 sync-all.sh，属于 bug，需修复后保留或删除该 make 目标 |
 | 7 | 目录结构中的 `scripts/release.sh` | 保留（文件存在），但需标注 release.sh 末尾调用不存在的 sync-all.sh，需修复 |
 
@@ -42,12 +42,12 @@
 | # | 新章节 | 内容 |
 |---|--------|------|
 | 1 | 品牌分发（P7） | 一段话说明：通过外部 brand-sync-tool 分发到 paoding/davinci/doraemon 品牌仓库，详见 brand-sync-tool 仓库 |
-| 2 | 已归档仓库（P8） | 一段话说明：github-safe-publish 和 project-walkthrough-skill 已 archived，代码统一维护在 ruyi-skills |
+| 2 | 已归档仓库（P8） | 一段话说明：github-safe-publish 和 project-walkthrough-skill 已 archived，代码统一维护在 doraemon-skills |
 
 ### 修改后文档结构
 
 ```
-# ruyi-skills 架构设计
+# doraemon-skills 架构设计
 
 ## 目录结构
 （更新为实际结构：skill 名 ruyi-xxx，保留 .claude-plugin/、tests/、scripts/ 下实际存在的文件，去掉不存在的文件）
@@ -63,7 +63,7 @@
 ### P8. 已归档仓库（新增）
 
 ## 开发流程
-（简化：直接在 ruyi-skills 开发 → convert.sh 生成平台文件 → 手动提交 → brand-sync-tool 分发）
+（简化：直接在 doraemon-skills 开发 → convert.sh 生成平台文件 → 手动提交 → brand-sync-tool 分发）
 
 ## Makefile 命令
 （保留可用的 test/ci/check/convert/clean，标注 release 需修复）
@@ -85,7 +85,7 @@
 
 | # | 内容 | 说明 |
 |---|------|------|
-| 1 | 多品牌策略表格 | 从 ruyi-skills 原文档的 P6 搬过来，放在 README 的"目录结构"章节之后。格式：品牌 | GitHub 仓库 | 受众 | README 语言。注意 ruyi 自身不在此表格中（ruyi-skills 是源仓库，不是 sync 目标） |
+| 1 | 多品牌策略表格 | 从 doraemon-skills 原文档的 P6 搬过来，放在 README 的"目录结构"章节之后。格式：品牌 | GitHub 仓库 | 受众 | README 语言。注意 ruyi 自身不在此表格中（doraemon-skills 是源仓库，不是 sync 目标） |
 | 2 | brand-config.json 说明 | 各字段含义（repo_url、前缀、描述等） |
 | 3 | brands/ 目录维护说明 | 品牌专用 README 如何维护、什么时候需要更新 |
 | 4 | 转换覆盖范围清单 | sync.sh 实际替换了哪些内容（SKILL.md name、目录名、marketplace、README、CI、测试、平台文件等） |
@@ -101,4 +101,4 @@
 | project-walkthrough-skill（已 archived） | 只读，不再维护 |
 | 3 个品牌仓库（paoding/davinci/doraemon） | 由 sync.sh 自动生成，手动改会被覆盖 |
 | brand-sync-tool/verify-sync.sh | 工具脚本，不需要文档 |
-| ruyi-skills 的 README.md / CLAUDE.md / CHANGELOG.md | 不在本次 architecture-design.md 修改范围内 |
+| doraemon-skills 的 README.md / CLAUDE.md / CHANGELOG.md | 不在本次 architecture-design.md 修改范围内 |

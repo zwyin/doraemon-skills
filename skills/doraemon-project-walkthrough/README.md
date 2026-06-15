@@ -1,12 +1,12 @@
 # Project Walkthrough Generator
 
-[![CI](https://github.com/zwyin/ruyi-skills/actions/workflows/test.yml/badge.svg)](https://github.com/zwyin/ruyi-skills/actions/workflows/test.yml)
+[![CI](https://github.com/zwyin/doraemon-skills/actions/workflows/test.yml/badge.svg)](https://github.com/zwyin/doraemon-skills/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-1.6.1-blue.svg)]
 
 为任意软件项目生成分层技术走读文档的 Claude Code skill。输出 markdown 文档 + 交互式 HTML。
 
-[← 返回 ruyi-skills 合集](https://github.com/zwyin/ruyi-skills#readme)
+[← 返回 doraemon-skills 合集](https://github.com/zwyin/doraemon-skills#readme)
 
 ## 功能
 
@@ -27,21 +27,21 @@
 
 ```bash
 # 1. 添加 marketplace
-/plugin marketplace add zwyin/ruyi-skills
+/plugin marketplace add zwyin/doraemon-skills
 
 # 2. 安装插件
-/plugin install project-walkthrough@ruyi-skills
+/plugin install project-walkthrough@doraemon-skills
 ```
 
-安装后直接在任意项目中使用 `/project-walkthrough` 命令。
+安装后直接在任意项目中使用 `/doraemon-project-walkthrough` 命令。
 
 ### 手动安装
 
 将本仓库 clone 到本地，然后在 Claude Code 中指定 plugin 目录：
 
 ```bash
-git clone https://github.com/zwyin/ruyi-skills.git
-claude --plugin-dir ./ruyi-skills  # 保留完整目录结构，路径引用不会断裂
+git clone https://github.com/zwyin/doraemon-skills.git
+claude --plugin-dir ./doraemon-skills  # 保留完整目录结构，路径引用不会断裂
 ```
 
 ### 其他平台
@@ -50,8 +50,8 @@ claude --plugin-dir ./ruyi-skills  # 保留完整目录结构，路径引用不�
 |------|---------|
 | **Cursor** | 复制 `cursor/project-walkthrough.mdc` 到项目的 `.cursor/rules/` 目录 |
 | **Windsurf** | 复制 `.windsurf/rules/project-walkthrough.md` 到项目的 `.windsurf/rules/` 目录，或全局复制到 `~/.codeium/windsurf/rules/` |
-| **OpenCode** | 复制 `.opencode/skills/ruyi-project-walkthrough/` 到项目的 `.opencode/skills/` 目录，或全局复制到 `~/.config/opencode/skills/` |
-| **Gemini CLI** | `gemini skills install https://github.com/zwyin/ruyi-skills.git --path skills/project-walkthrough` |
+| **OpenCode** | 复制 `.opencode/skills/doraemon-project-walkthrough/` 到项目的 `.opencode/skills/` 目录，或全局复制到 `~/.config/opencode/skills/` |
+| **Gemini CLI** | `gemini skills install https://github.com/zwyin/doraemon-skills.git --path skills/doraemon-project-walkthrough` |
 
 > **注意：** Python 辅助脚本（`verify_sources.py`、`import_graph.py`）需要 Python 3 环境。在非 Claude Code 平台上，部分依赖脚本的功能可能需要手动调整路径。
 
@@ -60,7 +60,7 @@ claude --plugin-dir ./ruyi-skills  # 保留完整目录结构，路径引用不�
 **新手 / 第一次用？** 不带任何参数，直接分析当前项目：
 
 ```
-/project-walkthrough
+/doraemon-project-walkthrough
 ```
 
 这会生成一份中文概览走读（brief + general），包含 7-8 个章节 + 一个可在浏览器打开的交互式 HTML。打开 `interactive/walkthrough.html` 即可浏览。
@@ -68,7 +68,7 @@ claude --plugin-dir ./ruyi-skills  # 保留完整目录结构，路径引用不�
 **资深开发者？** 推荐用这个模式获取最深度的项目分析：
 
 ```
-/project-walkthrough /path/to/project --depth deep --audience dev
+/doraemon-project-walkthrough /path/to/project --depth deep --audience dev
 ```
 
 这会生成完整的技术深入走读：逐行代码分析、设计模式、安全模型、性能特征、错误处理、配置系统，附带 15-20 道测验题。
@@ -76,16 +76,16 @@ claude --plugin-dir ./ruyi-skills  # 保留完整目录结构，路径引用不�
 ## 用法
 
 ```
-/project-walkthrough                                              # Brief + general + zh (CWD)
-/project-walkthrough /path/to/project                             # Brief + general + zh
-/project-walkthrough /path/to/project --depth medium              # Medium + general + zh
-/project-walkthrough /path/to/project --depth deep --audience dev # Deep + dev + zh
-/project-walkthrough --depth all                                  # All depths + general + zh (CWD)
-/project-walkthrough /path/to/project --lang en                   # Brief + general + en
-/project-walkthrough /path/to/project --depth deep --no-confirm    # Deep + 跳过确认门
-/project-walkthrough /path/to/project --lang zh-pure               # Brief + general + 纯中文
-/project-walkthrough /path/to/project --lang bilingual             # Brief + general + 中英对照
-/project-walkthrough --version                                    # 显示版本号
+/doraemon-project-walkthrough                                              # Brief + general + zh (CWD)
+/doraemon-project-walkthrough /path/to/project                             # Brief + general + zh
+/doraemon-project-walkthrough /path/to/project --depth medium              # Medium + general + zh
+/doraemon-project-walkthrough /path/to/project --depth deep --audience dev # Deep + dev + zh
+/doraemon-project-walkthrough --depth all                                  # All depths + general + zh (CWD)
+/doraemon-project-walkthrough /path/to/project --lang en                   # Brief + general + en
+/doraemon-project-walkthrough /path/to/project --depth deep --no-confirm    # Deep + 跳过确认门
+/doraemon-project-walkthrough /path/to/project --lang zh-pure               # Brief + general + 纯中文
+/doraemon-project-walkthrough /path/to/project --lang bilingual             # Brief + general + 中英对照
+/doraemon-project-walkthrough --version                                    # 显示版本号
 ```
 
 **参数说明：**
@@ -101,7 +101,7 @@ claude --plugin-dir ./ruyi-skills  # 保留完整目录结构，路径引用不�
 
 **语法规则：** 空格分隔（`--depth medium`），不支持 `--depth=medium`。无效值回退到默认。重复 flag 取最后一次。flags 大小写敏感。
 
-> 详细解析规则见 `skills/ruyi-project-walkthrough/SKILL.md` Usage 部分。
+> 详细解析规则见 `skills/doraemon-project-walkthrough/SKILL.md` Usage 部分。
 
 ## 偏好配置（EXTEND.md）
 

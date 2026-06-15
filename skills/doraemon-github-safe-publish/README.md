@@ -1,12 +1,12 @@
 # GitHub Safe Publish
 
-[![version](https://img.shields.io/badge/version-0.7.0-blue)](skills/ruyi-github-safe-publish/SKILL.md) [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![tests](https://img.shields.io/badge/tests-235%20passing-brightgreen)](tests/) [![platform](https://img.shields.io/badge/platform-Claude%20Code-purple)](https://claude.ai/code)
+[![version](https://img.shields.io/badge/version-0.7.0-blue)](skills/doraemon-github-safe-publish/SKILL.md) [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![tests](https://img.shields.io/badge/tests-235%20passing-brightgreen)](tests/) [![platform](https://img.shields.io/badge/platform-Claude%20Code-purple)](https://claude.ai/code)
 
 Safely publish local Git projects to GitHub public repositories with two-layer desensitization scanning (135 deterministic rules + AI semantic analysis), auto-fix, backup, and end-to-end publishing workflow.
 
 A [Claude Code](https://claude.ai/code) skill / plugin.
 
-[← Back to ruyi-skills collection](https://github.com/zwyin/ruyi-skills#readme) · [中文文档](docs/README_zh.md)
+[← Back to doraemon-skills collection](https://github.com/zwyin/doraemon-skills#readme) · [中文文档](docs/README_zh.md)
 
 ## Why
 
@@ -27,12 +27,12 @@ GitHub Safe Publish combines **deterministic rule scanning** (135 regex rules ac
 ## Usage
 
 ```
-/github-safe-publish                    # Full flow: scan → fix → publish
-/github-safe-publish --scan-only        # Scan only, output report, no fix/publish
-/github-safe-publish --dry-run          # Scan + show fix suggestions, no actual changes
-/github-safe-publish --seo              # Full flow + SEO optimization
-/github-safe-publish --ci               # Full flow + CI workflow generation
-/github-safe-publish --seo --ci         # Everything
+/doraemon-github-safe-publish                    # Full flow: scan → fix → publish
+/doraemon-github-safe-publish --scan-only        # Scan only, output report, no fix/publish
+/doraemon-github-safe-publish --dry-run          # Scan + show fix suggestions, no actual changes
+/doraemon-github-safe-publish --seo              # Full flow + SEO optimization
+/doraemon-github-safe-publish --ci               # Full flow + CI workflow generation
+/doraemon-github-safe-publish --seo --ci         # Everything
 ```
 
 ### Flow Control
@@ -90,7 +90,7 @@ Select **Browse and install plugins** → Select **github-safe-publish** → Sel
 
 ```bash
 # 1. Add marketplace
-/plugin marketplace add zwyin/github-safe-publish
+/plugin marketplace add zwyin/doraemon-github-safe-publish
 
 # 2. Install plugin
 /plugin install github-safe-publish@github-safe-publish
@@ -99,13 +99,13 @@ Select **Browse and install plugins** → Select **github-safe-publish** → Sel
 ### Option 3: Ask the Agent
 
 ```
-Please install github-safe-publish from github.com/zwyin/github-safe-publish
+Please install github-safe-publish from github.com/zwyin/doraemon-github-safe-publish
 ```
 
 ### Option 4: Quick Install (npx)
 
 ```bash
-npx skills add zwyin/github-safe-publish
+npx skills add zwyin/doraemon-github-safe-publish
 ```
 
 ### Option 5: ClawHub
@@ -118,10 +118,10 @@ clawhub install github-safe-publish
 
 ```bash
 git clone https://github.com/zwyin/github-safe-publish.git
-claude --plugin-dir ./github-safe-publish
+claude --plugin-dir ./doraemon-github-safe-publish
 ```
 
-Or copy `skills/ruyi-github-safe-publish/SKILL.md` to your project's skill directory.
+Or copy `skills/doraemon-github-safe-publish/SKILL.md` to your project's skill directory.
 
 ### Other Platforms
 
