@@ -30,7 +30,7 @@
 /plugin marketplace add zwyin/doraemon-skills
 
 # 2. 安装插件
-/plugin install project-walkthrough@doraemon-skills
+/plugin install doraemon-skills@doraemon-skills
 ```
 
 安装后直接在任意项目中使用 `/doraemon-project-walkthrough` 命令。
@@ -48,8 +48,8 @@ claude --plugin-dir ./doraemon-skills  # 保留完整目录结构，路径引用
 
 | 平台 | 安装方式 |
 |------|---------|
-| **Cursor** | 复制 `cursor/project-walkthrough.mdc` 到项目的 `.cursor/rules/` 目录 |
-| **Windsurf** | 复制 `.windsurf/rules/project-walkthrough.md` 到项目的 `.windsurf/rules/` 目录，或全局复制到 `~/.codeium/windsurf/rules/` |
+| **Cursor** | 复制 `cursor/doraemon-project-walkthrough.mdc` 到项目的 `.cursor/rules/` 目录 |
+| **Windsurf** | 复制 `.windsurf/rules/doraemon-project-walkthrough.md` 到项目的 `.windsurf/rules/` 目录，或全局复制到 `~/.codeium/windsurf/rules/` |
 | **OpenCode** | 复制 `.opencode/skills/doraemon-project-walkthrough/` 到项目的 `.opencode/skills/` 目录，或全局复制到 `~/.config/opencode/skills/` |
 | **Gemini CLI** | `gemini skills install https://github.com/zwyin/doraemon-skills.git --path skills/doraemon-project-walkthrough` |
 

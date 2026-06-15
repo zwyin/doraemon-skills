@@ -32,8 +32,8 @@ Or with options:
 | Platform | Install |
 |----------|---------|
 | **Claude Code** | `/plugin marketplace add zwyin/doraemon-skills` |
-| **Cursor** | Copy `cursor/project-walkthrough.mdc` → `.cursor/rules/` |
-| **Windsurf** | Copy `.windsurf/rules/project-walkthrough.md` → `.windsurf/rules/` |
+| **Cursor** | Copy `cursor/doraemon-project-walkthrough.mdc` → `.cursor/rules/` |
+| **Windsurf** | Copy `.windsurf/rules/doraemon-project-walkthrough.md` → `.windsurf/rules/` |
 | **OpenCode** | Copy `.opencode/skills/doraemon-project-walkthrough/` → `.opencode/skills/` |
 | **Gemini CLI** | `gemini skills install https://github.com/zwyin/doraemon-skills.git --path skills/doraemon-project-walkthrough` |
 
