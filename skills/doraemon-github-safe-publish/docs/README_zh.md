@@ -1,8 +1,8 @@
 # GitHub Safe Publish
 
-[![version](https://img.shields.io/badge/version-0.7.0-blue)](../skills/ruyi-github-safe-publish/SKILL.md) [![license](https://img.shields.io/badge/license-MIT-green)](../LICENSE) [![tests](https://img.shields.io/badge/tests-235%20passing-brightgreen)](../tests/) [![platform](https://img.shields.io/badge/platform-Claude%20Code-purple)](https://claude.ai/code)
+[![version](https://img.shields.io/badge/version-0.7.0-blue)](../skills/doraemon-github-safe-publish/SKILL.md) [![license](https://img.shields.io/badge/license-MIT-green)](../LICENSE) [![tests](https://img.shields.io/badge/tests-235%20passing-brightgreen)](../tests/) [![platform](https://img.shields.io/badge/platform-Claude%20Code-purple)](https://claude.ai/code)
 
-[English](../README.md) · [← 返回 ruyi-skills 合集](https://github.com/zwyin/ruyi-skills#readme)
+[English](../README.md) · [← 返回 doraemon-skills 合集](https://github.com/zwyin/doraemon-skills#readme)
 
 安全地将本地 Git 项目发布到 GitHub 公开仓库——两层脱敏扫描（135 条确定性规则 + AI 语义分析）、自动修复、备份回滚、端到端发布流程。
 
@@ -75,12 +75,12 @@ GitHub Safe Publish 用 **确定性规则扫描**（135 条正则，覆盖 6 个
 ## 使用方法
 
 ```
-/github-safe-publish                    # 完整流程：扫描 → 修复 → 发布
-/github-safe-publish --scan-only        # 只做脱敏扫描，输出报告，不修复不发布
-/github-safe-publish --dry-run          # 扫描 + 展示修复建议，不做任何实际修改
-/github-safe-publish --seo              # 完整流程 + SEO 优化
-/github-safe-publish --ci               # 完整流程 + CI 工作流生成
-/github-safe-publish --seo --ci         # 全部功能
+/doraemon-github-safe-publish                    # 完整流程：扫描 → 修复 → 发布
+/doraemon-github-safe-publish --scan-only        # 只做脱敏扫描，输出报告，不修复不发布
+/doraemon-github-safe-publish --dry-run          # 扫描 + 展示修复建议，不做任何实际修改
+/doraemon-github-safe-publish --seo              # 完整流程 + SEO 优化
+/doraemon-github-safe-publish --ci               # 完整流程 + CI 工作流生成
+/doraemon-github-safe-publish --seo --ci         # 全部功能
 ```
 
 ### 流程控制
@@ -125,7 +125,7 @@ Step 6: 验证 + 输出报告
 
 ```bash
 # 1. 添加 marketplace
-/plugin marketplace add zwyin/github-safe-publish
+/plugin marketplace add zwyin/doraemon-github-safe-publish
 
 # 2. 安装插件
 /plugin install github-safe-publish@github-safe-publish
@@ -134,13 +134,13 @@ Step 6: 验证 + 输出报告
 ### 方式 3：让 Agent 安装
 
 ```
-Please install github-safe-publish from github.com/zwyin/github-safe-publish
+Please install github-safe-publish from github.com/zwyin/doraemon-github-safe-publish
 ```
 
 ### 方式 4：npx 快速安装
 
 ```bash
-npx skills add zwyin/github-safe-publish
+npx skills add zwyin/doraemon-github-safe-publish
 ```
 
 ### 方式 5：ClawHub
@@ -153,10 +153,10 @@ clawhub install github-safe-publish
 
 ```bash
 git clone https://github.com/zwyin/github-safe-publish.git
-claude --plugin-dir ./github-safe-publish
+claude --plugin-dir ./doraemon-github-safe-publish
 ```
 
-或将 `skills/ruyi-github-safe-publish/SKILL.md` 复制到你的项目 skill 目录。
+或将 `skills/doraemon-github-safe-publish/SKILL.md` 复制到你的项目 skill 目录。
 
 ### 其他平台
 
