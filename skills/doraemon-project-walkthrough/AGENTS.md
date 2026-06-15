@@ -31,11 +31,11 @@ Or with options:
 
 | Platform | Install |
 |----------|---------|
-| **Claude Code** | `/plugin marketplace add zwyin/project-walkthrough-skill` |
+| **Claude Code** | `/plugin marketplace add zwyin/doraemon-skills` |
 | **Cursor** | Copy `cursor/project-walkthrough.mdc` → `.cursor/rules/` |
 | **Windsurf** | Copy `.windsurf/rules/project-walkthrough.md` → `.windsurf/rules/` |
 | **OpenCode** | Copy `.opencode/skills/doraemon-project-walkthrough/` → `.opencode/skills/` |
-| **Gemini CLI** | `gemini skills install https://github.com/zwyin/project-walkthrough-skill.git --path skills/doraemon-project-walkthrough` |
+| **Gemini CLI** | `gemini skills install https://github.com/zwyin/doraemon-skills.git --path skills/doraemon-project-walkthrough` |
 
 ## Output
 

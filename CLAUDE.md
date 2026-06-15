@@ -33,6 +33,6 @@ ruyi-skills 是唯一开发仓库。其他品牌仓库（paoding/davinci/doraemo
 
 | Remote | GitHub 仓库 | 用途 |
 |--------|-----------|------|
-| ruyi | zwyin/ruyi-skills | 开发 + 推送 |
+| doraemon | zwyin/doraemon-skills | 开发 + 推送 |
 
 其他品牌通过 brand-sync-tool 生成，不再作为 remote 添加到本仓库。
