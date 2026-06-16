@@ -19,7 +19,7 @@ SKILL.md 及 references/ 内不得链接 skill 目录外的文件。每个 skill
 本地代理拦截 HTTPS，需显式绕过：
 
 ```bash
-git -c http.proxy="" -c https.proxy="" push ruyi main
+git -c http.proxy="" -c https.proxy="" push origin main
 ```
 
 ## 多品牌架构
