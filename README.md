@@ -61,116 +61,121 @@ claude --plugin-dir ./doraemon-skills
 
 ## Skills
 
-### github-safe-publish
+### doraemon-github-safe-publish
 
-安全发布到 GitHub——两层脱敏扫描（135 条规则 + AI）、自动修复、备份回滚、端到端发布。
+Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI), auto-fix, backup & rollback, end-to-end workflow.
 
 [![version](https://img.shields.io/badge/version-0.7.0-blue)](skills/doraemon-github-safe-publish/skills/doraemon-github-safe-publish/SKILL.md)
 
-**扫描覆盖 6 大维度**：密钥凭证（100 rules）、数据库连接（5 rules）、个人隐私（8 rules）、内部基础设施（6 rules）、文件黑名单（12 rules）、Git 历史（4 rules）。
+**Covers 6 dimensions**: Secrets & Credentials (100 rules), Database Connections (5 rules), PII (8 rules), Internal Infrastructure (6 rules), File Blacklist (12 rules), Git History (4 rules).
 
-**竞品对比**：
+**Competitor Comparison**:
 
-| 特性 | GitHub Safe Publish | Gitleaks | TruffleHog | git-secrets |
+| Feature | GitHub Safe Publish | Gitleaks | TruffleHog | git-secrets |
 |------|:-:|:-:|:-:|:-:|
-| 价格 | **免费 / 开源** | 免费 | 免费 | 免费 |
-| 检测方式 | 规则 + AI 两层 | 仅规则 | 仅规则 | 仅规则 |
-| 规则数量 | **135 条** | ~120 条 | 800+ 检测器 | ~20 条 |
-| 自动修复 | **支持** | 不支持 | 不支持 | 不支持 |
-| 发布流程 | **端到端** | 无 | 无 | 无 |
-| 备份回滚 | **支持** | 无 | 无 | 无 |
-| PII 检测 | **支持（邮箱/手机/身份证）** | 不支持 | 不支持 | 不支持 |
-| 内部基础设施 | **支持（内网IP/域名/路径）** | 不支持 | 不支持 | 不支持 |
-| AI 语义分析 | **支持** | 不支持 | 不支持 | 不支持 |
-| 文件黑名单 | **支持（.env/.pem/.key 等）** | 不支持 | 部分 | 不支持 |
-| Git 历史扫描 | **支持** | 支持 | 支持 | 不支持 |
-| 平台 | Claude Code | CLI | CLI | CLI |
-| SEO 优化 | **支持** | 无 | 无 | 无 |
-| CI 生成 | **支持** | 无 | 无 | 无 |
+| Price | **Free / Open Source** | Free | Free | Free |
+| Detection Method | Rules + AI (two layers) | Rules only | Rules only | Rules only |
+| Rule Count | **135 rules** | ~120 rules | 800+ detectors | ~20 rules |
+| Auto-fix | **Yes** | No | No | No |
+| Publishing Flow | **End-to-end** | No | No | No |
+| Backup & Rollback | **Yes** | No | No | No |
+| PII Detection | **Yes (email/phone/national ID)** | No | No | No |
+| Internal Infra | **Yes (internal IP/domain/path)** | No | No | No |
+| AI Semantic Analysis | **Yes** | No | No | No |
+| File Blacklist | **Yes (.env/.pem/.key etc.)** | No | Partial | No |
+| Git History Scan | **Yes** | Yes | Yes | No |
+| Platform | Claude Code | CLI | CLI | CLI |
+| SEO Optimization | **Yes** | No | No | No |
+| CI Generation | **Yes** | No | No | No |
 
-> **定位差异**：Gitleaks/TruffleHog 是纯粹的密钥检测工具，适合 CI 集成。GitHub Safe Publish 是端到端的发布助手——扫描、修复、创建仓库、推送一站完成，AI 补充规则无法覆盖的语义泄露。
+> **Positioning difference**: Gitleaks/TruffleHog are pure secret detection tools, ideal for CI integration. GitHub Safe Publish is an end-to-end publishing assistant — scan, fix, create repo, and push in one shot, with AI covering semantic leaks that regex rules can't catch.
 
 ```bash
-# 完整流程：脱敏扫描 → 修复 → 发布到 GitHub
+# Full workflow: scan → fix → publish to GitHub
 /doraemon-github-safe-publish
 
-# 核心 + SEO 优化（描述、Topics、Badges）
+# Core + SEO optimization (description, topics, badges)
 /doraemon-github-safe-publish --seo
 
-# 核心 + CI 生成（自动检测项目类型，生成 .github/workflows/test.yml）
+# Core + CI generation (auto-detect project type, generate .github/workflows/test.yml)
 /doraemon-github-safe-publish --ci
 
-# 全部：核心 + SEO + CI
+# Full: core + SEO + CI
 /doraemon-github-safe-publish --seo --ci
 
-# 只做脱敏扫描，输出报告，不修复不发布
+# Scan only — output report, no fix, no publish
 /doraemon-github-safe-publish --scan
 
-# 模拟运行：扫描 + 修复建议，但不做任何实际修改
+# Dry run — scan + fix suggestions, but no actual changes
 /doraemon-github-safe-publish --dry-run
 ```
 
-| 参数 | 说明 | 互斥规则 |
-|------|------|----------|
-| (无参数) | 核心流程：脱敏 + 发布 | — |
-| `--seo` | 附加 SEO 优化（描述、Topics、Badges、README 优化） | 不可与 `--scan` / `--dry-run` 组合 |
-| `--ci` | 附加 CI 生成（自动检测项目类型并生成 workflow） | 不可与 `--scan` / `--dry-run` 组合 |
-| `--scan` | 只扫描输出报告，不修复不发布 | 不可与 `--seo` / `--ci` / `--dry-run` 组合 |
-| `--dry-run` | 模拟运行：扫描 + 修复建议，但不执行 | 不可与 `--seo` / `--ci` / `--scan` 组合 |
+| Flag | Description | Mutual Exclusion |
+|------|-------------|------------------|
+| (none) | Core workflow: scan + publish | — |
+| `--seo` | Add SEO optimization (description, topics, badges, README) | Cannot combine with `--scan` / `--dry-run` |
+| `--ci` | Add CI generation (auto-detect and generate workflow) | Cannot combine with `--scan` / `--dry-run` |
+| `--scan` | Scan only, output report | Cannot combine with `--seo` / `--ci` / `--dry-run` |
+| `--dry-run` | Dry run: scan + suggestions, no changes | Cannot combine with `--seo` / `--ci` / `--scan` |
+
+[→ Full documentation](skills/doraemon-github-safe-publish/README.md)
 
 ---
 
-### project-walkthrough
+### doraemon-project-walkthrough
 
-项目技术走读——多深度、多受众、多语言，输出 markdown + 交互式 HTML。
+Project walkthrough generator — multi-depth, multi-audience, multi-language, outputs markdown + interactive HTML.
 
 [![version](https://img.shields.io/badge/version-1.6.1-blue)](skills/doraemon-project-walkthrough/skills/doraemon-project-walkthrough/SKILL.md)
 
 ```bash
-# 自动分析当前目录，推荐深度
+# Auto-analyze current directory, recommend depth
 /doraemon-project-walkthrough
 
-# 指定项目路径
+# Specify project path
 /doraemon-project-walkthrough /path/to/project
 
-# 快速概览（适合小项目或初次了解）
+# Quick overview (small projects or first-time review)
 /doraemon-project-walkthrough --depth brief
 
-# 深度走读（适合需要全面了解的项目）
+# Deep walkthrough (comprehensive analysis)
 /doraemon-project-walkthrough --depth deep
 
-# 全量走读（包含所有细节，适合大型项目）
+# Full walkthrough (all details, large projects)
 /doraemon-project-walkthrough --depth all
 
-# 面向开发者受众
+# For developer audience
 /doraemon-project-walkthrough --audience dev
 
-# 纯中文输出（无英文混排）
-/doraemon-project-walkthrough --lang zh-pure
+# Pure English output
+/doraemon-project-walkthrough --lang en
 
-# 双语输出（中英对照）
+# Bilingual output (Chinese + English side by side)
 /doraemon-project-walkthrough --lang bilingual
 
-# 跳过确认，使用推荐默认值（适合自动化流程）
+# Skip confirmation, use recommended defaults (automation-friendly)
 /doraemon-project-walkthrough --no-confirm
 
-# 组合使用：深度走读 + 开发者受众 + 中文输出
-/doraemon-project-walkthrough --depth deep --audience dev --lang zh
+# Combine: deep walkthrough + dev audience + English
+/doraemon-project-walkthrough --depth deep --audience dev --lang en
 
-# 查看版本号
+# Print version
 /doraemon-project-walkthrough --version
 ```
 
-| 参数 | 说明 | 可选值 | 默认 |
-|------|------|--------|------|
-| `path` | 项目路径 | 任意目录路径 | 当前目录 |
-| `--depth` | 走读深度 | `brief` / `medium` / `deep` / `all` | 自动推荐 |
-| `--audience` | 目标受众 | `general` / `dev` | `general` |
-| `--lang` | 输出语言 | `zh` / `zh-pure` / `en` / `bilingual` | `zh` |
-| `--no-confirm` | 跳过确认 | (flag, 无值) | — |
-| `--version` | 打印版本号 | (flag, 无值) | — |
+| Flag | Description | Values | Default |
+|------|-------------|--------|---------|
+| `path` | Project path | any directory path | current directory |
+| `--depth` | Walkthrough depth | `brief` / `medium` / `deep` / `all` | auto-recommended |
+| `--audience` | Target audience | `general` / `dev` | `general` |
+| `--lang` | Output language | `zh` / `zh-pure` / `en` / `bilingual` | `zh` |
+| `--no-confirm` | Skip confirmation | (flag, no value) | — |
+| `--version` | Print version | (flag, no value) | — |
+
+[→ Full documentation](skills/doraemon-project-walkthrough/README.md)
 
 ---
+
 
 ## License
 
