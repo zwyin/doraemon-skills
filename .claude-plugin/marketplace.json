@@ -1,7 +1,7 @@
 {
   "name": "doraemon-skills",
   "description": "Claude Code skills collection — a 4D pocket of productivity tools",
-  "version": "0.8.4",
+  "version": "0.9.0",
   "owner": {
     "name": "zwyin"
   },
