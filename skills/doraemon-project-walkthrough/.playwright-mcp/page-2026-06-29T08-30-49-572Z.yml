@@ -1,0 +1,221 @@
+- generic [ref=e1]:
+  - button "☾" [ref=e2] [cursor=pointer]
+  - button "A-" [ref=e3] [cursor=pointer]
+  - button "A+" [ref=e4] [cursor=pointer]
+  - navigation [ref=e5]:
+    - heading "章节" [level=2] [ref=e6]
+    - link "01 项目总览 — 它是什么、定位、关键数字" [ref=e7] [cursor=pointer]:
+      - /url: "#"
+    - link "02 架构总览 — 组件图与数据流" [ref=e8] [cursor=pointer]:
+      - /url: "#"
+    - link "03 核心机制 — Converter-first HTML ..." [ref=e9] [cursor=pointer]:
+      - /url: "#"
+    - link "04 Manifest-first 准确性系统 — 先验证，后写作" [ref=e10] [cursor=pointer]:
+      - /url: "#"
+    - link "05 六阶段流水线 Phase 0–5 全景" [ref=e11] [cursor=pointer]:
+      - /url: "#"
+    - link "06 适应性范围 — 内容分析 → scope/depth 推荐" [ref=e12] [cursor=pointer]:
+      - /url: "#"
+    - link "07 Quiz 解析与交互（含 1.6.2 bug 复盘）" [active] [ref=e13] [cursor=pointer]:
+      - /url: "#"
+    - link "08 import_graph.py — 源码依赖图提取（含并..." [ref=e14] [cursor=pointer]:
+      - /url: "#"
+    - link "09 verify_sources.py — JSON Sch..." [ref=e15] [cursor=pointer]:
+      - /url: "#"
+    - link "10 convert.sh — 跨平台分发（Cursor / ..." [ref=e16] [cursor=pointer]:
+      - /url: "#"
+    - link "11 release.sh 与版本同步（6 处单一事实源）" [ref=e17] [cursor=pointer]:
+      - /url: "#"
+    - link "12 SessionStart 自动更新检查 hook 机制" [ref=e18] [cursor=pointer]:
+      - /url: "#"
+    - link "13 测试套件架构 — 233 个测试的金字塔" [ref=e19] [cursor=pointer]:
+      - /url: "#"
+    - link "14 多语言 / 多受众 / 多深度矩阵" [ref=e20] [cursor=pointer]:
+      - /url: "#"
+    - link "15 安全模型 — URL sanitize、HTML esc..." [ref=e21] [cursor=pointer]:
+      - /url: "#"
+    - link "16 设计演进 — 从空 HTML bug 到版本治理" [ref=e22] [cursor=pointer]:
+      - /url: "#"
+    - link "17 动手复刻 — 如何造一个迷你 converter" [ref=e23] [cursor=pointer]:
+      - /url: "#"
+    - link "18 总结 + 知识测验" [ref=e24] [cursor=pointer]:
+      - /url: "#"
+    - link "知识测验" [ref=e25] [cursor=pointer]:
+      - /url: "#"
+    - link "关于" [ref=e26] [cursor=pointer]:
+      - /url: "#"
+  - main [ref=e27]:
+    - generic [ref=e160]:
+      - heading "7 Quiz 解析与交互（含 1.6.2 bug 复盘）" [level=1] [ref=e161]
+      - blockquote [ref=e162]:
+        - paragraph [ref=e163]:
+          - text: 本章回答：
+          - strong [ref=e164]: markdown 里的 quiz 题怎么变成 HTML 里能点的高亮交互？又为什么曾经所有题的「正确答案」都塌成 A？
+      - heading "7.1 quiz 从 markdown 到 HTML 的旅程" [level=2] [ref=e165]
+      - paragraph [ref=e166]:
+        - text: walkthrough 每个深度级别的最后一章必须含一个
+        - code [ref=e167]: "## Quiz"
+        - text: 段。Phase 4 转换时，
+        - code [ref=e168]: md_to_html.py
+        - text: 把这段单独抽出来，解析成结构化数据，再渲染成可点击的交互组件：
+      - code [ref=e170]: "# Simplified from: scripts/md_to_html.py:223-276 (parse_quiz_md 核心，节选) def parse_quiz_md(quiz_md): questions = [] parts = re.split(r'\\*\\*Q\\d+[：:]\\s*\\*\\*\\s*', quiz_md) # 按 **Q1:** 切题 for part in parts[1:]: lines = [l.strip() for l in part.strip().split(\"\\n\") if l.strip()] q_lines, opts, answer, explanation = [], [], \"\", \"\" state = \"question\" for line in lines: opt_match = re.match(r'^(?:[-*]\\s+)?([A-D])[.)]\\s+(.*)', line) # A. 选项 if opt_match and state in (\"question\", \"options\"): state = \"options\"; opts.append(opt_match.group(2)) elif re.match(r'^\\*\\*Answer\\s*[：:]\\s*[A-D]\\s*\\*\\*', line, re.IGNORECASE): m = re.search(r'[：:]\\s*([A-D])\\s*\\*\\*', line, re.IGNORECASE) # 锚定取答案字母 if m: answer = m.group(1).upper() state = \"answer\" elif re.match(r'^\\*\\*Explanation\\s*[：:]', line, re.IGNORECASE): explanation = ...; state = \"explanation\" elif state == \"explanation\": if line.strip() == \"---\": break # --- 是题间分隔，别吞进解释 explanation += \" \" + line elif state == \"question\": q_lines.append(line) if q_lines and opts and answer: correct = ord(answer) - ord('A') # A→0, B→1, C→2, D→3 if 0 <= correct < len(opts): questions.append({\"q\": \" \".join(q_lines), \"o\": opts, \"c\": correct, \"e\": explanation}) return questions"
+      - blockquote [ref=e171]:
+        - paragraph [ref=e172]:
+          - strong [ref=e173]: 这段代码在做什么
+          - text: ：用一个小状态机（
+          - code [ref=e174]: question → options → answer → explanation
+          - text: ）把每道题切成四块：题干
+          - code [ref=e175]: q
+          - text: 、选项列表
+          - code [ref=e176]: o
+          - text: 、
+          - strong [ref=e177]:
+            - text: 正确答案索引
+            - code [ref=e178]: c
+          - text: 、解释
+          - code [ref=e179]: e
+          - text: 。关键是
+          - code [ref=e180]: c = ord(answer) - ord('A')
+          - text: ——把字母 A/B/C/D 换成数字索引 0/1/2/3，HTML 组件靠这个索引判断对错。
+      - heading "7.2 渲染：点击高亮 + 解释" [level=2] [ref=e181]
+      - paragraph [ref=e182]:
+        - code [ref=e183]: build_quiz_section
+        - text: 把解析出的题目渲染成一段内联 JS：每题一个卡片，4 个按钮。点对 → 绿色高亮；点错 → 結色高亮 + 自动把正确答案也标绿；下方弹出解释。完全前端交互，无后端。
+      - heading "7.3 1.6.2 的灾难性 bug：所有正确答案塌成 A" [level=2] [ref=e184]
+      - paragraph [ref=e185]:
+        - text: 这是这个项目最值得复盘的事故。2026-06-22，用户报告：生成的 walkthrough 里，
+        - strong [ref=e186]: 每道 quiz 题不管选什么都判 A 对、选真正答案反而错
+        - text: 。
+      - paragraph [ref=e187]: 根因是一行正则：
+      - code [ref=e189]: "# Simplified from: docs/incident-2026-06-22-quiz-answer-index-bug.md:44-50 (bug 复现) # 出问题的原代码： elif re.match(r'^\\*\\*Answer\\s*[：:]\\s*[A-D]\\s*\\*\\*', line, re.IGNORECASE): m = re.search(r'([A-D])', line, re.IGNORECASE) # ← bug if m: answer = m.group(1).upper()"
+      - paragraph [ref=e190]:
+        - code [ref=e191]: re.match(...)
+        - text: 正确地用
+        - code [ref=e192]:
+          - strong [ref=e193]: "Answer: X"
+        - text: 的形状做了门控，
+        - strong [ref=e194]: 但
+        - code [ref=e195]: re.search(r'([A-D])', line)
+        - text: 是在
+        - strong [ref=e196]: 整行
+        - text: 里找第一个 A-D 字母。对
+        - code [ref=e197]:
+          - strong [ref=e198]: "Answer: B"
+        - text: 这行，第一个 A-D 字母是单词 "
+        - strong [ref=e199]: A
+        - text: nswer" 里的
+        - code [ref=e200]: A
+        - text: （位置 2），不是真正的答案
+        - code [ref=e201]: B
+        - text: （位置 10+）。于是
+        - code [ref=e202]: answer
+        - text: 永远是
+        - code [ref=e203]: "\"A\""
+        - text: ，
+        - code [ref=e204]: correct = ord('A') - ord('A') = 0
+        - text: ——
+        - strong [ref=e205]: 每道题的正确索引都是 0（选项 A）
+        - text: 。
+      - blockquote [ref=e206]:
+        - paragraph [ref=e207]:
+          - strong [ref=e208]: 类比理解
+          - text: ：像在一句「答案是 B」里找字母，结果先看到了「
+          - strong [ref=e209]: 答
+          - text: 案」开头的 A，就兴奋地喊「找到了，是 A！」。门锁是对的（确认这是答案行），但开锁后抓错了钥匙。bug 从 2026-05-27（commit
+          - code [ref=e210]: ca1f371
+          - text: ）潜伏到 2026-06-22 被用户发现，
+          - strong [ref=e211]:
+            - text: 期间所有用
+            - code [ref=e212]: "--quiz-chapter"
+            - text: 生成的报告，quiz 全错
+          - text: 。
+      - heading "7.4 修复：锚定到「冒号后、闭合 ** 前」" [level=2] [ref=e213]:
+        - text: 7.4 修复：锚定到「冒号后、闭合
+        - code [ref=e214]: "**"
+        - text: 前」
+      - paragraph [ref=e215]: 一行正则的改动：
+      - code [ref=e217]: "# Simplified from: scripts/md_to_html.py:246-254 (修复后的锚定正则 + 注释) # Anchor the letter search to \"after the colon, before the closing **\" so we # capture the answer letter, not the 'A' in the literal word \"Answer\". m = re.search(r'[：:]\\s*([A-D])\\s*\\*\\*', line, re.IGNORECASE)"
+      - paragraph [ref=e218]:
+        - text: 新正则
+        - code [ref=e219]:
+          - text: r'[：:]\s
+          - emphasis [ref=e220]: ([A-D])\s
+          - text: \
+          - emphasis [ref=e221]: \
+          - text: "'"
+        - text: 要求字母
+        - strong [ref=e222]:
+          - text: 夹在冒号和闭合
+          - code [ref=e223]
+        - text: 之间**——这个位置只可能是真答案字母，绝不会被 "Answer" 里的 A 误匹配。
+      - paragraph [ref=e224]:
+        - text: 同时修了个伴生 bug：题间的
+        - code [ref=e225]: "---"
+        - text: 分隔符原本会被拼进上一题的解释文本（HTML 里每条解释末尾拖着个
+        - code [ref=e226]: "---"
+        - text: ）。修复是在解释收集状态里遇到独立
+        - code [ref=e227]: "---"
+        - text: 行就
+        - code [ref=e228]: break
+        - text: 。
+      - heading "7.5 为什么测试套件漏检了 26 天？" [level=2] [ref=e229]
+      - paragraph [ref=e230]:
+        - text: 这是事故里最发人深省的部分。原本有个测试
+        - code [ref=e231]: test_html_quiz_answer_index_valid
+        - text: ，但它只查
+        - strong [ref=e232]: 形状
+        - text: ：
+      - code [ref=e234]: "# Simplified from: docs/incident-2026-06-22-quiz-answer-index-bug.md:54-63 (漏检的测试) if not isinstance(correct, int) or correct < 0 or correct >= len(opts): errors.append(...) # 只验证 0 <= c < len(opts)，从不交叉核对 c 和源 markdown 的 **Answer: X** 字母"
+      - paragraph [ref=e235]:
+        - code [ref=e236]: c=0
+        - text: （永远选 A）的形状完全合法（
+        - code [ref=e237]: 0 <= 0 < 4
+        - text: ），所以这个测试
+        - strong [ref=e238]: 永远通过
+        - text: 。它检查的是「索引合不合法」，没检查「索引对不对」。
+      - blockquote [ref=e239]:
+        - paragraph [ref=e240]:
+          - strong [ref=e241]: 教训
+          - text: ：
+          - strong [ref=e242]: 形状测试（shape test）≠ 正确性测试（correctness test）
+          - text: 。一个值落在合法区间里，不代表它是正确值。测 quiz 答案，必须把生成的
+          - code [ref=e243]: c
+          - text: 和源 markdown 的
+          - code [ref=e244]:
+            - strong [ref=e245]: "Answer: X"
+          - text: 字母
+          - strong [ref=e246]: 交叉核对
+          - text: ，而不是只看它在
+          - code [ref=e247]: "[0, len)"
+          - text: 区间里。
+      - heading "7.6 防御纵深：三层堵同一类 bug" [level=2] [ref=e248]
+      - paragraph [ref=e249]: 事故后加了三层防御，防止同类回归：
+      - list [ref=e250]:
+        - listitem [ref=e251]:
+          - strong [ref=e252]: 直接单测
+          - text: （新增
+          - code [ref=e253]: test_quiz_parsing.py
+          - text: ，7 用例）：覆盖 A/B/C/D 全字母 + 中文冒号 + mixed 答案。修复前 6 fail / 1 pass，修复后 7 pass。
+        - listitem [ref=e254]:
+          - strong [ref=e255]: 锚定正则
+          - text: ：修复改变了正则结构，未来谁敢删掉锚定、退回
+          - code [ref=e256]: re.search(r'([A-D])', ...)
+          - text: ，单测立刻挂。
+        - listitem [ref=e257]:
+          - strong [ref=e258]: 流程建议
+          - text: ：把原来只查形状的测试收紧成「交叉核对」——这是原始缺口。
+      - heading "7.7 四传播通道的善后" [level=2] [ref=e259]
+      - paragraph [ref=e260]:
+        - text: 修了 dev 仓还不够——
+        - code [ref=e261]: md_to_html.py
+        - text: 存在于
+        - strong [ref=e262]: 17 个位置
+        - text: （品牌仓、已装插件、本地 agents）。事故报告详细记录了四传播通道的逐一验证：dev 仓 → 品牌仓（brand-sync）→ 本地 Claude Code 插件 → 本地 agents。全盘清理 18 副本后，
+        - strong [ref=e263]: 0 个运行时可达的 BUG 版本残留
+        - text: （详见第 16 章）。这个事故直接催生了 1.6.2 / 1.6.3 / 1.6.4 三个补丁版本。
+      - separator [ref=e264]
+      - generic [ref=e265]:
+        - link "← 上一章" [ref=e266] [cursor=pointer]:
+          - /url: "#"
+        - link "下一章 →" [ref=e267] [cursor=pointer]:
+          - /url: "#"

@@ -1,0 +1,227 @@
+- generic [active] [ref=e1]:
+  - button "☾" [ref=e2] [cursor=pointer]
+  - button "A-" [ref=e3] [cursor=pointer]
+  - button "A+" [ref=e4] [cursor=pointer]
+  - navigation [ref=e5]:
+    - heading "章节" [level=2] [ref=e6]
+    - link "01 项目总览 — 它是什么、定位、关键数字" [ref=e7] [cursor=pointer]:
+      - /url: "#"
+    - link "02 架构总览 — 组件图与数据流" [ref=e8] [cursor=pointer]:
+      - /url: "#"
+    - link "03 核心机制 — Converter-first HTML ..." [ref=e9] [cursor=pointer]:
+      - /url: "#"
+    - link "04 Manifest-first 准确性系统 — 先验证，后写作" [ref=e10] [cursor=pointer]:
+      - /url: "#"
+    - link "05 六阶段流水线 Phase 0–5 全景" [ref=e11] [cursor=pointer]:
+      - /url: "#"
+    - link "06 适应性范围 — 内容分析 → scope/depth 推荐" [ref=e12] [cursor=pointer]:
+      - /url: "#"
+    - link "07 Quiz 解析与交互（含 1.6.2 bug 复盘）" [ref=e13] [cursor=pointer]:
+      - /url: "#"
+    - link "08 import_graph.py — 源码依赖图提取（含并..." [ref=e14] [cursor=pointer]:
+      - /url: "#"
+    - link "09 verify_sources.py — JSON Sch..." [ref=e15] [cursor=pointer]:
+      - /url: "#"
+    - link "10 convert.sh — 跨平台分发（Cursor / ..." [ref=e16] [cursor=pointer]:
+      - /url: "#"
+    - link "11 release.sh 与版本同步（6 处单一事实源）" [ref=e17] [cursor=pointer]:
+      - /url: "#"
+    - link "12 SessionStart 自动更新检查 hook 机制" [ref=e18] [cursor=pointer]:
+      - /url: "#"
+    - link "13 测试套件架构 — 233 个测试的金字塔" [ref=e19] [cursor=pointer]:
+      - /url: "#"
+    - link "14 多语言 / 多受众 / 多深度矩阵" [ref=e20] [cursor=pointer]:
+      - /url: "#"
+    - link "15 安全模型 — URL sanitize、HTML esc..." [ref=e21] [cursor=pointer]:
+      - /url: "#"
+    - link "16 设计演进 — 从空 HTML bug 到版本治理" [ref=e22] [cursor=pointer]:
+      - /url: "#"
+    - link "17 动手复刻 — 如何造一个迷你 converter" [ref=e23] [cursor=pointer]:
+      - /url: "#"
+    - link "18 总结 + 知识测验" [ref=e24] [cursor=pointer]:
+      - /url: "#"
+    - link "知识测验" [ref=e25] [cursor=pointer]:
+      - /url: "#"
+    - link "关于" [ref=e26] [cursor=pointer]:
+      - /url: "#"
+  - main [ref=e27]:
+    - generic [ref=e28]:
+      - heading "1 项目总览 — 它是什么、定位、关键数字" [level=1] [ref=e29]
+      - blockquote [ref=e30]:
+        - paragraph [ref=e31]:
+          - text: 本章回答一个问题：
+          - strong [ref=e32]: 这个项目到底是什么？
+          - text: 如果你在 60 秒内只能记住三件事，应该记住哪三件？
+      - heading "1.1 一句话定位" [level=2] [ref=e33]
+      - paragraph [ref=e34]:
+        - code [ref=e35]: ruyi-project-walkthrough
+        - text: 是一个
+        - strong [ref=e36]: Claude Code skill
+        - text: （也可以分发到 Cursor / Windsurf / OpenCode / Gemini CLI），它的作用是：
+        - strong [ref=e37]: 给任意软件项目 / 研究报告 / 文档集合，自动生成一份分层的技术走读文档
+        - text: ，产物是「编号 markdown 章节 + 一个自包含的交互式 HTML」。
+      - blockquote [ref=e38]:
+        - paragraph [ref=e39]:
+          - strong [ref=e40]: 类比理解
+          - text: ：想象你被空投到一个陌生城市，手里只有一张地铁图。这个 skill 就像一个本地向导——它会先在城里逛一圈（探索代码），摸清楚哪几条线路最重要（架构分析），然后给你画一张带标注、带路线、带小测验的「城市导览图」（走读文档 + HTML），让你 30 分钟内对这座城市有体系化的认识。
+      - heading "1.2 关键数字（全部从源文件实测，非编造）" [level=2] [ref=e41]
+      - table [ref=e42]:
+        - rowgroup [ref=e43]:
+          - row "维度 数值 来源" [ref=e44]:
+            - columnheader "维度" [ref=e45]
+            - columnheader "数值" [ref=e46]
+            - columnheader "来源" [ref=e47]
+        - rowgroup [ref=e48]:
+          - row "Skill 版本 1.6.4 SKILL.md frontmatter version 字段（唯一版本源）" [ref=e49]:
+            - cell "Skill 版本" [ref=e50]
+            - cell "1.6.4" [ref=e51]:
+              - code [ref=e52]: 1.6.4
+            - cell "SKILL.md frontmatter version 字段（唯一版本源）" [ref=e53]:
+              - code [ref=e54]: SKILL.md
+              - text: frontmatter
+              - code [ref=e55]: version
+              - text: 字段（
+              - strong [ref=e56]: 唯一版本源
+              - text: ）
+          - row "插件元数据版本 1.6.4 .claude-plugin/plugin.json" [ref=e57]:
+            - cell "插件元数据版本" [ref=e58]
+            - cell "1.6.4" [ref=e59]:
+              - code [ref=e60]: 1.6.4
+            - cell ".claude-plugin/plugin.json" [ref=e61]:
+              - code [ref=e62]: .claude-plugin/plugin.json
+          - row "Marketplace 版本 1.6.4 .claude-plugin/marketplace.json" [ref=e63]:
+            - cell "Marketplace 版本" [ref=e64]
+            - cell "1.6.4" [ref=e65]:
+              - code [ref=e66]: 1.6.4
+            - cell ".claude-plugin/marketplace.json" [ref=e67]:
+              - code [ref=e68]: .claude-plugin/marketplace.json
+          - row "README 徽章版本 1.6.4 README.md version badge" [ref=e69]:
+            - cell "README 徽章版本" [ref=e70]
+            - cell "1.6.4" [ref=e71]:
+              - code [ref=e72]: 1.6.4
+            - cell "README.md version badge" [ref=e73]:
+              - code [ref=e74]: README.md
+              - text: version badge
+          - row "最新 CHANGELOG 条目 [1.6.4] - 2026-06-22 CHANGELOG.md" [ref=e75]:
+            - cell "最新 CHANGELOG 条目" [ref=e76]
+            - cell "[1.6.4] - 2026-06-22" [ref=e77]:
+              - code [ref=e78]: "[1.6.4] - 2026-06-22"
+            - cell "CHANGELOG.md" [ref=e79]:
+              - code [ref=e80]: CHANGELOG.md
+          - row "核心转换器规模 md_to_html.py 652 行 / 15 个函数 wc -l 实测" [ref=e81]:
+            - cell "核心转换器规模" [ref=e82]
+            - cell "md_to_html.py 652 行 / 15 个函数" [ref=e83]:
+              - code [ref=e84]: md_to_html.py
+              - text: 652 行 / 15 个函数
+            - cell "wc -l 实测" [ref=e85]:
+              - code [ref=e86]: wc -l
+              - text: 实测
+          - row "验证器规模 verify_sources.py 315 行 wc -l 实测" [ref=e87]:
+            - cell "验证器规模" [ref=e88]
+            - cell "verify_sources.py 315 行" [ref=e89]:
+              - code [ref=e90]: verify_sources.py
+              - text: 315 行
+            - cell "wc -l 实测" [ref=e91]:
+              - code [ref=e92]: wc -l
+              - text: 实测
+          - row "测试函数总数 233 个（7 个测试文件） grep -c 'def test_' 逐文件求和" [ref=e93]:
+            - cell "测试函数总数" [ref=e94]
+            - cell "233 个（7 个测试文件）" [ref=e95]:
+              - strong [ref=e96]: "233"
+              - text: 个（7 个测试文件）
+            - cell "grep -c 'def test_' 逐文件求和" [ref=e97]:
+              - code [ref=e98]: grep -c 'def test_'
+              - text: 逐文件求和
+          - row "文档文件数 docs/ 下 16 个 md + reviews/3 + verification-reports/16 ls 实测" [ref=e99]:
+            - cell "文档文件数" [ref=e100]
+            - cell "docs/ 下 16 个 md + reviews/3 + verification-reports/16" [ref=e101]:
+              - code [ref=e102]: docs/
+              - text: 下 16 个 md + reviews/3 + verification-reports/16
+            - cell "ls 实测" [ref=e103]:
+              - code [ref=e104]: ls
+              - text: 实测
+      - code [ref=e106]: "// Simplified from: skills/ruyi-project-walkthrough/SKILL.md:1-8 (frontmatter) --- name: ruyi-project-walkthrough version: \"1.6.4\" description: Generate a structured walkthrough of any project — software codebase, research report, or document collection. Analyzes input, recommends scope, confirms with user, then generates markdown docs + interactive HTML. argument-hint: \"[path] [--depth brief|medium|deep|all] [--audience general|dev] ...\" ---"
+      - blockquote [ref=e107]:
+        - paragraph [ref=e108]:
+          - strong [ref=e109]: 这段代码在做什么
+          - text: ：这是 skill 的「身份证」。Claude Code 加载 skill 时，先读这个 frontmatter——
+          - code [ref=e110]: name
+          - text: 决定怎么调用它（
+          - code [ref=e111]: /ruyi-project-walkthrough
+          - text: ），
+          - code [ref=e112]: version
+          - text: 是整个项目的唯一版本源（所有其他地方的版本号都从这里同步），
+          - code [ref=e113]: description
+          - text: 告诉 Claude「什么情况下该用这个 skill」。
+      - heading "1.3 它解决什么问题" [level=2] [ref=e114]
+      - paragraph [ref=e115]:
+        - text: LLM 生成技术文档时有一个顽固的毛病：
+        - strong [ref=e116]: 幻觉（hallucination）
+        - text: ——它会一本正经地写出根本不存在的文件名、函数签名、版本号。传统的「让它写文档」流程没有刹车机制。
+      - paragraph [ref=e117]:
+        - text: 这个 skill 的核心立意就是：
+        - strong [ref=e118]: 用一套「先验证、后写作」的流程（manifest-first），把 LLM 的幻觉锁死在生成之前
+        - text: 。每一个写进文档里的代码块、版本号、目录结构，都必须先在真实源码里验证过、记录在一个
+        - code [ref=e119]: sources-manifest.json
+        - text: 清单里，才允许落笔。
+      - blockquote [ref=e120]:
+        - paragraph [ref=e121]:
+          - strong [ref=e122]: 类比理解
+          - text: ：就像写新闻报道，记者不能凭印象写「据知情人士透露」，每句话都要能指回一个采访录音或文件。这里的
+          - code [ref=e123]: sources-manifest.json
+          - text: 就是那本「采访录音索引」——文档里每个事实，都能在索引里查到它来自哪个源文件的哪几行。
+      - heading "1.4 技术栈" [level=2] [ref=e124]
+      - list [ref=e125]:
+        - listitem [ref=e126]:
+          - strong [ref=e127]: 主体
+          - text: ：Markdown（
+          - code [ref=e128]: SKILL.md
+          - text: 本身就是「用自然语言编写的工作流程序」，890 行）
+        - listitem [ref=e129]:
+          - strong [ref=e130]: 重活脚本
+          - text: ：Python 3（无第三方运行时依赖，转换器、验证器、依赖图都是标准库实现）
+        - listitem [ref=e131]:
+          - strong [ref=e132]: 分发/发版
+          - text: ：Bash（
+          - code [ref=e133]: convert.sh
+          - text: 跨平台生成、
+          - code [ref=e134]: release.sh
+          - text: 版本同步）
+        - listitem [ref=e135]:
+          - strong [ref=e136]: 唯一可选依赖
+          - text: ：
+          - code [ref=e137]: jsonschema
+          - text: （验证器用它做 schema 校验；缺失则降级跳过，不阻塞）
+        - listitem [ref=e138]:
+          - strong [ref=e139]: 交付物
+          - text: ：自包含 HTML（零外部依赖，纯
+          - code [ref=e140]: file://
+          - text: 可打开）
+      - heading "1.5 四个值得记住的设计决策（预告）" [level=2] [ref=e141]
+      - paragraph [ref=e142]: 这四点会在后续章节展开，这里先给个全景：
+      - list [ref=e143]:
+        - listitem [ref=e144]:
+          - strong [ref=e145]: Converter-first HTML
+          - text: （第 3 章）：用 Python
+          - strong [ref=e146]: 预渲染
+          - text: 静态 HTML，而不是在浏览器里用
+          - code [ref=e147]: innerHTML
+          - text: 动态拼。这从根上避免了「打开是空白页」的经典坑。
+        - listitem [ref=e148]:
+          - strong [ref=e149]: Manifest-first 准确性
+          - text: （第 4 章）：先验证后写，manifest 是「写作许可证」而非「审计日志」。
+        - listitem [ref=e150]:
+          - strong [ref=e151]: 六阶段流水线 + 硬交付门禁
+          - text: （第 5 章）：Phase 5 必须读到
+          - code [ref=e152]: verify-result.json
+          - text: 的
+          - code [ref=e153]: "passed: true"
+          - text: 才算完成，禁止虚构指标。
+        - listitem [ref=e154]:
+          - strong [ref=e155]: 源码依赖图驱动架构图
+          - text: （第 8 章）：架构图的每一根箭头都来自
+          - code [ref=e156]: import_graph.py
+          - text: 提取的真实 import，不靠目录结构瞎猜。
+      - separator [ref=e157]
+      - link "下一章 →" [ref=e159] [cursor=pointer]:
+        - /url: "#"

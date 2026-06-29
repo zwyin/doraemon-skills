@@ -1,0 +1,160 @@
+- generic [active] [ref=e1]:
+  - button "☾" [ref=e2] [cursor=pointer]
+  - button "A-" [ref=e3] [cursor=pointer]
+  - button "A+" [ref=e4] [cursor=pointer]
+  - navigation [ref=e5]:
+    - heading "章节" [level=2] [ref=e6]
+    - link "01 项目总览 — 它是什么、定位、关键数字" [ref=e7] [cursor=pointer]:
+      - /url: "#"
+    - link "02 架构总览 — 组件图与数据流" [ref=e8] [cursor=pointer]:
+      - /url: "#"
+    - link "03 核心机制 — Converter-first HTML ..." [ref=e9] [cursor=pointer]:
+      - /url: "#"
+    - link "04 Manifest-first 准确性系统 — 先验证，后写作" [ref=e10] [cursor=pointer]:
+      - /url: "#"
+    - link "05 六阶段流水线 Phase 0–5 全景" [ref=e11] [cursor=pointer]:
+      - /url: "#"
+    - link "06 适应性范围 — 内容分析 → scope/depth 推荐" [ref=e12] [cursor=pointer]:
+      - /url: "#"
+    - link "07 Quiz 解析与交互（含 1.6.2 bug 复盘）" [ref=e13] [cursor=pointer]:
+      - /url: "#"
+    - link "08 import_graph.py — 源码依赖图提取（含并..." [ref=e14] [cursor=pointer]:
+      - /url: "#"
+    - link "09 verify_sources.py — JSON Sch..." [ref=e15] [cursor=pointer]:
+      - /url: "#"
+    - link "10 convert.sh — 跨平台分发（Cursor / ..." [ref=e16] [cursor=pointer]:
+      - /url: "#"
+    - link "11 release.sh 与版本同步（6 处单一事实源）" [ref=e17] [cursor=pointer]:
+      - /url: "#"
+    - link "12 SessionStart 自动更新检查 hook 机制" [ref=e18] [cursor=pointer]:
+      - /url: "#"
+    - link "13 测试套件架构 — 233 个测试的金字塔" [ref=e19] [cursor=pointer]:
+      - /url: "#"
+    - link "14 多语言 / 多受众 / 多深度矩阵" [ref=e20] [cursor=pointer]:
+      - /url: "#"
+    - link "15 安全模型 — URL sanitize、HTML esc..." [ref=e21] [cursor=pointer]:
+      - /url: "#"
+    - link "16 设计演进 — 从空 HTML bug 到版本治理" [ref=e22] [cursor=pointer]:
+      - /url: "#"
+    - link "17 动手复刻 — 如何造一个迷你 converter" [ref=e23] [cursor=pointer]:
+      - /url: "#"
+    - link "18 总结 + 知识测验" [ref=e24] [cursor=pointer]:
+      - /url: "#"
+    - link "知识测验" [ref=e25] [cursor=pointer]:
+      - /url: "#"
+    - link "关于" [ref=e26] [cursor=pointer]:
+      - /url: "#"
+  - main [ref=e27]:
+    - generic [ref=e268]:
+      - heading "知识测验" [level=1] [ref=e269]
+      - generic [ref=e270]:
+        - generic [ref=e271]:
+          - generic [ref=e272]: 1. 这个 skill 最核心的立意是什么？
+          - button "A. 生成漂亮的交互式 HTML" [disabled] [ref=e273]
+          - button "B. 用 manifest-first 系统锁死 LLM 幻觉（先验证后写作）" [disabled] [ref=e274]
+          - button "C. 支持四种语言和两种受众" [disabled] [ref=e275]
+          - button "D. 自动提取 import 依赖图" [disabled] [ref=e276]
+          - generic [ref=e380]: 漂亮的 HTML（A）、多语言（C）、依赖图（D）都是手段或附加能力。根本立意是 B——manifest-first 准确性系统把「不准写未验证的声明」作为铁律，这是它区别于「让 AI 随便写文档」的核心。第 4 章开篇就讲了这点。
+        - generic [ref=e277]:
+          - generic [ref=e278]: 2. 为什么 HTML 生成用 Python 预渲染（Converter-first）而非浏览器动态渲染？
+          - button "A. Python 比 JavaScript 快" [disabled] [ref=e279]
+          - button "B. 动态渲染需要联网，预渲染可以离线" [disabled] [ref=e280]
+          - button "C. 动态渲染会因 CSP/内容大/特殊字符静默失败导致空白页，预渲染产物确定可验证" [disabled] [ref=e281]
+          - button "D. 浏览器不支持 markdown" [disabled] [ref=e282]
+          - generic [ref=e381]: "根本原因是 C。历史上这个项目栽过「打开空白页」的坑（fix-proposal-empty-html.md），根因就是动态注入静默失败。预渲染在构建期就把内容烤进静态 HTML，产物确定、可被 verify_html 校验、`file://` 直开。第 3.1-3.2 节详述。"
+        - generic [ref=e283]:
+          - generic [ref=e284]: "3. `sources-manifest.json` 的定位是什么？"
+          - button "A. 写完文档后的审计日志" [ref=e285] [cursor=pointer]
+          - button "B. 写作前的许可证——没进 manifest 的声明不准写" [ref=e286] [cursor=pointer]
+          - button "C. 只给 CI 用的配置文件" [ref=e287] [cursor=pointer]
+          - button "D. 记录用户偏好的文件" [ref=e288] [cursor=pointer]
+        - generic [ref=e289]:
+          - generic [ref=e290]: 4. 1.6.2 的 quiz bug 根因是什么？
+          - button "A. quiz 的 JS 交互代码写错了" [ref=e291] [cursor=pointer]
+          - 'button "B. `parse_quiz_md` 用 `re.search(r''([A-D])'', line)` 匹配到了 \"Answer\" 单词里的 A，导致所有正确答案塌成索引 0" [ref=e292] [cursor=pointer]'
+          - button "C. markdown 的 quiz 格式不规范" [ref=e293] [cursor=pointer]
+          - button "D. HTML 转义把答案字母吃掉了" [ref=e294] [cursor=pointer]
+        - generic [ref=e295]:
+          - generic [ref=e296]: 5. 为什么 quiz bug 漏检了 26 天？
+          - button "A. 没有 CI" [ref=e297] [cursor=pointer]
+          - button "B. 相关测试只检查答案索引的「形状」（0<=c<len(opts)），没交叉核对源 markdown 的 Answer 字母" [ref=e298] [cursor=pointer]
+          - button "C. 没人用 quiz 功能" [ref=e299] [cursor=pointer]
+          - button "D. 测试文件被误删了" [ref=e300] [cursor=pointer]
+        - generic [ref=e301]:
+          - generic [ref=e302]: 6. Phase 5 交付门禁最关键的证据文件是哪个？
+          - 'button "A. `sources-manifest.json`" [ref=e303] [cursor=pointer]'
+          - 'button "B. `analysis.md`" [ref=e304] [cursor=pointer]'
+          - 'button "C. `verify-result.json`（必须含 `\"passed\": true`）" [ref=e305] [cursor=pointer]'
+          - 'button "D. `CHANGELOG.md`" [ref=e306] [cursor=pointer]'
+        - generic [ref=e307]:
+          - generic [ref=e308]: "7. `import_graph.py` 最有价值的特性「parallel siblings」检测的是什么？"
+          - button "A. 互相循环引用的模块" [ref=e309] [cursor=pointer]
+          - button "B. 共享同一个依赖、但彼此不互相 import 的模块" [ref=e310] [cursor=pointer]
+          - button "C. 没有任何依赖的孤立模块" [ref=e311] [cursor=pointer]
+          - button "D. 目录结构里平级的模块" [ref=e312] [cursor=pointer]
+        - generic [ref=e313]:
+          - generic [ref=e314]: "8. `convert.sh` 对 Windsurf 和 Cursor/OpenCode 的同步检查策略有何不同？"
+          - button "A. 全部逐字比对" [ref=e315] [cursor=pointer]
+          - button "B. 全部只查字符数" [ref=e316] [cursor=pointer]
+          - button "C. Cursor/OpenCode 逐字比对（无损），Windsurf 只查字符上限（内容被裁剪过）" [ref=e317] [cursor=pointer]
+          - button "D. 都不检查" [ref=e318] [cursor=pointer]
+        - generic [ref=e319]:
+          - generic [ref=e320]: "9. `verify_sources.py` 的 `jsonschema` 是必需依赖吗？"
+          - button "A. 是，没装就完全无法运行" [ref=e321] [cursor=pointer]
+          - button "B. 不是，它是可选依赖；缺失时降级跳过 schema 校验、只告警不阻塞" [ref=e322] [cursor=pointer]
+          - button "C. 是，但只在 strict 模式需要" [ref=e323] [cursor=pointer]
+          - button "D. 只在 Windows 上需要" [ref=e324] [cursor=pointer]
+        - generic [ref=e325]:
+          - generic [ref=e326]: 10. SessionStart 更新检查 hook 怎么做到不拖慢每次启动？
+          - button "A. 用异步执行" [ref=e327] [cursor=pointer]
+          - button "B. 24h 缓存——上次检查在 24h 内且回放条件满足时不联网，直接回放缓存结果" [ref=e328] [cursor=pointer]
+          - button "C. 只在第一次启动检查" [ref=e329] [cursor=pointer]
+          - button "D. 用户手动触发" [ref=e330] [cursor=pointer]
+        - generic [ref=e331]:
+          - generic [ref=e332]: "11. v0.9.3 修复的 `check_update.sh` 缓存误报 bug，症状是什么？"
+          - button "A. 永远提示「已是最新」" [ref=e333] [cursor=pointer]
+          - button "B. 用户刚升级完，反而收到「有新版本」提示指向更旧的版本" [ref=e334] [cursor=pointer]
+          - button "C. 完全不提示" [ref=e335] [cursor=pointer]
+          - button "D. 提示错误的版本号格式" [ref=e336] [cursor=pointer]
+        - generic [ref=e337]:
+          - generic [ref=e338]: "12. `sanitize_url` 采用什么策略防 XSS？"
+          - button "A. 黑名单——列出所有危险 scheme" [ref=e339] [cursor=pointer]
+          - 'button "B. 白名单——只放行 http/https/mailto/tel，其余 scheme 替换成 #" [ref=e340] [cursor=pointer]'
+          - button "C. 用正则删除所有 URL" [ref=e341] [cursor=pointer]
+          - button "D. 给所有 URL 加 rel=\"nofollow\"" [ref=e342] [cursor=pointer]
+        - generic [ref=e343]:
+          - generic [ref=e344]: "13. `release.sh` 在当前 collection 架构下的已知问题是什么？"
+          - button "A. 不支持 semver" [ref=e345] [cursor=pointer]
+          - button "B. 路径解析多套一层 skills/（解析到不存在的路径）+ 门禁要求 develop 但实际在 main" [ref=e346] [cursor=pointer]
+          - button "C. 无法更新 CHANGELOG" [ref=e347] [cursor=pointer]
+          - button "D. 必须联网才能跑" [ref=e348] [cursor=pointer]
+        - generic [ref=e349]:
+          - generic [ref=e350]: 14. EXTEND.md 的两个优先级是？
+          - button "A. 系统级 > 用户级" [ref=e351] [cursor=pointer]
+          - button "B. 项目级（.project-walkthrough/EXTEND.md）> 用户级（$HOME/.project-walkthrough/EXTEND.md）" [ref=e352] [cursor=pointer]
+          - button "C. 用户级 > 项目级" [ref=e353] [cursor=pointer]
+          - button "D. 只有一个位置" [ref=e354] [cursor=pointer]
+        - generic [ref=e355]:
+          - generic [ref=e356]: "15. 代码块引用格式为什么用 `// Simplified from:` 而非 `// Source:`？"
+          - 'button "A. `Source:` 是保留字" [ref=e357] [cursor=pointer]'
+          - 'button "B. walkthrough 里的代码总是被简化过的，`Simplified from:` 永远诚实；`Source:` 暗示逐字复制，几乎总是错且易出错" [ref=e358] [cursor=pointer]'
+          - 'button "C. `Simplified from:` 更短" [ref=e359] [cursor=pointer]'
+          - 'button "D. `Source:` 不被解析器支持" [ref=e360] [cursor=pointer]'
+        - generic [ref=e361]:
+          - generic [ref=e362]: "16. `parse_table` 处理表格时用什么技巧避免代码内容与 `|` 分隔符冲突？"
+          - button "A. 禁止表格里出现代码" [ref=e363] [cursor=pointer]
+          - 'button "B. 先用占位符（`__CODE0__`）遮罩所有反引号代码，切完表格再还原" [ref=e364] [cursor=pointer]'
+          - button "C. 用 CSV 解析器" [ref=e365] [cursor=pointer]
+          - 'button "D. 把 `|` 替换成其他字符" [ref=e366] [cursor=pointer]'
+        - generic [ref=e367]:
+          - generic [ref=e368]: 17. 本项目的版本号「唯一版本源」定义在哪里？
+          - button "A. plugin.json 的 version 字段" [ref=e369] [cursor=pointer]
+          - button "B. SKILL.md frontmatter 的 version 字段" [ref=e370] [cursor=pointer]
+          - button "C. CHANGELOG.md 的最新条目" [ref=e371] [cursor=pointer]
+          - button "D. README 的 badge" [ref=e372] [cursor=pointer]
+        - generic [ref=e373]:
+          - generic [ref=e374]: 18. 这次 walkthrough 自身的 manifest 有多少条已验证声明、多少条未验证？
+          - button "A. 63 已验证，5 未验证" [ref=e375] [cursor=pointer]
+          - button "B. 63 已验证，0 未验证" [ref=e376] [cursor=pointer]
+          - button "C. 18 已验证，0 未验证" [ref=e377] [cursor=pointer]
+          - button "D. 233 已验证，0 未验证" [ref=e378] [cursor=pointer]
