@@ -4,7 +4,7 @@
 
 Claude Code skills collection — a 4D pocket of productivity tools.
 
-English | [中文](#)
+English | [中文](README_zh.md)
 
 > Doraemon: like the beloved robot cat with a 4D pocket full of magical tools. Every skill is a handy gadget that solves your problem instantly.
 
