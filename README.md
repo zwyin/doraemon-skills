@@ -126,7 +126,7 @@ Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI)
 
 Project walkthrough generator — multi-depth, multi-audience, multi-language, outputs markdown + interactive HTML.
 
-[![version](https://img.shields.io/badge/version-1.6.1-blue)](skills/doraemon-project-walkthrough/skills/doraemon-project-walkthrough/SKILL.md)
+[![version](https://img.shields.io/badge/version-1.6.5-blue)](skills/doraemon-project-walkthrough/skills/doraemon-project-walkthrough/SKILL.md)
 
 ```bash
 # Auto-analyze current directory, recommend depth
@@ -173,6 +173,18 @@ Project walkthrough generator — multi-depth, multi-audience, multi-language, o
 | `--version` | Print version | (flag, no value) | — |
 
 [→ Full documentation](skills/doraemon-project-walkthrough/README.md)
+
+---
+
+### doraemon-version-check
+
+Version consistency checker — pre-release health check that verifies every version surface in the collection (frontmatter / manifests / Phase 0 banner / badges / CHANGELOG / dist copies) agrees with the canonical SKILL.md version. Dev-maintenance tool, not an end-user skill.
+
+[![version](https://img.shields.io/badge/version-0.1.1-blue)](skills/doraemon-version-check/skills/doraemon-version-check/SKILL.md)
+
+```bash
+python3 skills/doraemon-version-check/scripts/validate_versions.py --root .
+```
 
 ---
 

@@ -1,0 +1,1 @@
+skills/doraemon-version-check/SKILL.md
