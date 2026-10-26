@@ -65,7 +65,7 @@ claude --plugin-dir ./doraemon-skills
 
 Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI), auto-fix, backup & rollback, end-to-end workflow.
 
-[![version](https://img.shields.io/badge/version-0.7.0-blue)](skills/doraemon-github-safe-publish/skills/doraemon-github-safe-publish/SKILL.md)
+[![version](https://img.shields.io/badge/version-0.7.1-blue)](skills/doraemon-github-safe-publish/skills/doraemon-github-safe-publish/SKILL.md)
 
 **Covers 6 dimensions**: Secrets & Credentials (100 rules), Database Connections (5 rules), PII (8 rules), Internal Infrastructure (6 rules), File Blacklist (12 rules), Git History (4 rules).
 
@@ -126,7 +126,7 @@ Safely publish to GitHub — two-layer desensitization scanning (135 rules + AI)
 
 Project walkthrough generator — multi-depth, multi-audience, multi-language, outputs markdown + interactive HTML.
 
-[![version](https://img.shields.io/badge/version-1.6.5-blue)](skills/doraemon-project-walkthrough/skills/doraemon-project-walkthrough/SKILL.md)
+[![version](https://img.shields.io/badge/version-1.6.6-blue)](skills/doraemon-project-walkthrough/skills/doraemon-project-walkthrough/SKILL.md)
 
 ```bash
 # Auto-analyze current directory, recommend depth
@@ -180,7 +180,7 @@ Project walkthrough generator — multi-depth, multi-audience, multi-language, o
 
 Version consistency checker — pre-release health check that verifies every version surface in the collection (frontmatter / manifests / Phase 0 banner / badges / CHANGELOG / dist copies) agrees with the canonical SKILL.md version. Dev-maintenance tool, not an end-user skill.
 
-[![version](https://img.shields.io/badge/version-0.1.1-blue)](skills/doraemon-version-check/skills/doraemon-version-check/SKILL.md)
+[![version](https://img.shields.io/badge/version-0.1.2-blue)](skills/doraemon-version-check/skills/doraemon-version-check/SKILL.md)
 
 ```bash
 python3 skills/doraemon-version-check/scripts/validate_versions.py --root .
